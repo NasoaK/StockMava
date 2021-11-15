@@ -52,7 +52,44 @@ class ArticleModel
             echo 'prb';
         }
     }
-    // Create function
+    //* Add image function
+    public function addimage($nom){
+
+        $file_name = $_FILES['image']['name'];
+        $temp_name = $_FILES['image']['tmp_name'];
+        $file_type = $_FILES['image']['type'];
+        $dossier = 'Image/';
+
+        do {
+            
+        } while (is_file($dossier.$nom.'.jpg') || is_file($dossier.$nom.'.gif')); 
+            
+        // On defini les types de fichiers autorisés, ici seuls les jpg et les png sont acceptés
+        $AllowedExtensions = array('image/jpeg', 'image/png', 'image/gif') ;
+        $Extension = strrchr($file_name,'.');
+        $Extension = substr($Extension,1);
+        $Extension = strtolower($Extension);
+        
+        if((count($AllowedExtensions) > 0 && in_array($file_type, $AllowedExtensions))){
+            if(copy($temp_name,$dossier.$nom.'.'.$Extension)){
+            $up = true;
+            //'Le fichier est valide';
+            $msg = 'Le fichier est valide';
+            // On récupere le nom du fichier uploadé
+                $nomdufichier = $nom.'.'.$Extension;
+            }
+        }else {
+            $up = false;
+            $msg = 'Erreur upload';
+        }
+        
+        if ($up == true){
+            // Chemin du fichier uploadé
+            return $image = $dossier.$nomdufichier;
+        }
+    }
+
+    //* Create function
     public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image){
         //Connect to database
             $pdo = $this->getPDO();
@@ -75,7 +112,7 @@ class ArticleModel
     
     }
 
-    //update function
+    //*update functions
     public function updateImage($image,$id){
             //Connect to database
             $pdo = $this->getPDO();
@@ -141,7 +178,15 @@ class ArticleModel
     $pdo = null;
     }
 
-    //DELETE FUNCTION
+    //*DELETE FUNCTION
+
+    public function deleteimage($nom){
+        $jpg = '.jpg';
+        $png = '.png';
+        $gif = '.gif';
+        
+    }
+
     public function deleteArticle($id){
         $pdo = $this->getPDO();
         $prep = $pdo->prepare("DELETE FROM `ArticlesMava` WHERE `id`=?");    
@@ -151,9 +196,6 @@ class ArticleModel
         $pdo->commit();
         $pdo = null;
     }
-
-
-
 
 }
 ?>
