@@ -73,7 +73,7 @@ class ArticleController
         }
     }
 
-    // Controller Post
+    // TODO POST ARTICLE
     public function addArticle(){
 
         require_once 'View/AddArticleView.php';
@@ -82,12 +82,55 @@ class ArticleController
         //Check if form is submited
         if(isset($_POST['submit'])){
 
-            $nom = trim($_POST['nom']);
-            $prix_achat = trim($_POST['prixAchat']);
-            $prix_vente = trim($_POST['prixVente']);
-            $quantity = trim($_POST['quantity']);
-            $image = fopen($_FILES['image']['tmp_name'],'rb');
-            $categorie_id = trim($_POST['categorie']);
+            // !! TODO Image upload in dir
+            // On donne une valeur aleatoire au fichier qu'on va uploader et on teste si ce nom existe deja
+            $dossier = 'Image/';
+            do {
+                $nom = trim($_POST['nom']);
+            } while (is_file($dossier.$nom.'.jpg') || is_file($dossier.$nom.'.gif')); //$s est le nom du fichier sans l'extension
+
+            $file_name = $_FILES['image']['name'];
+            $temp_name = $_FILES['image']['tmp_name'];
+            $file_type = $_FILES['image']['type'];
+            
+            // On defini les types de fichiers autorisés, ici seuls les jpg et les png sont acceptés
+            $AllowedExtensions = array('image/jpeg', 'image/png', 'image/gif') ;
+            $Extension = strrchr($file_name,'.');
+            $Extension = substr($Extension,1);
+            $Extension = strtolower($Extension);
+            
+            if((count($AllowedExtensions) > 0 && in_array($file_type, $AllowedExtensions))){
+               if(copy($temp_name,$dossier.$nom.'.'.$Extension)){
+                   $up = true;
+
+                   //'Le fichier est valide';
+                   $msg = 'Le fichier est valide';
+
+                   // On récupere le nom du fichier uploadé
+                    $nomdufichier = $nom.'.'.$Extension;
+                }
+            }else {
+                $up = false;
+                $msg = 'Erreur upload';
+            }
+            //!! ******************Fin de l'upload **************************************
+
+                if ($up == true){
+
+                // Chemin du fichier uploadé
+                $image = $dossier.$nomdufichier;
+                // TODO Take the rest
+               
+                $prix_achat = trim($_POST['prixAchat']);
+                $prix_vente = trim($_POST['prixVente']);
+                $quantity = trim($_POST['quantity']);
+    
+                //Insert the values in the database
+                $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image);
+         
+                }
+
+            //!!! END Image upload
 
                 // Error handler
                 /*  
@@ -102,8 +145,8 @@ class ArticleController
                     
                 }  */
 
-            //Insert the values in the database
-            $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie_id);
+
+       
             
         }
     
