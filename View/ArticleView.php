@@ -20,7 +20,6 @@
                 <p> Prix d'achat : <?= $article->get_prix_achat(); ?></p>
                 <p> Prix de vente : <?= $article->get_prix_vente(); ?></p>
                 <p> Quantité : <?= $article->get_quantity(); ?></p>
-                <p>Categorie : <?= $article->get_categorie(); ?></p>
             </div>
             <button> <a href="?page=Articles&id=<?=$article->get_id();?>">Details</a></button>
         </div>

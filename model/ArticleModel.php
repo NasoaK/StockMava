@@ -53,7 +53,7 @@ class ArticleModel
         }
     }
     // Create function
-    public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image, $categorie_id){
+    public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image){
         //Connect to database
             $pdo = $this->getPDO();
          //Insert script

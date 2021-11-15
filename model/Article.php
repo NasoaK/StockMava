@@ -8,7 +8,7 @@ class Article{
     private $prix_achat;
     private $prix_vente;
     private $image;
-    private $categorie_id;
+
  
 
 // Get functions
@@ -37,10 +37,7 @@ class Article{
         return $this->quantity;
     }
 
-    public function get_categorie()
-    {
-        return $this->categorie_id;
-    }
+   
 
     public function get_image()
     {
