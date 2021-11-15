@@ -51,7 +51,6 @@ if(isset($_GET['page'])){
         require_once 'controller/ArticleController.php';
         $articleCtrl = new ArticleController();
         $articleCtrl->addArticle();
-
     }
     
     // Error view

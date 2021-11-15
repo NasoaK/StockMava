@@ -12,7 +12,14 @@
  
 
     <form action="" method="post" enctype="multipart/form-data">
-
+        <input list="categories" placeholder="une categorie">
+            <datalist id="categories">
+                <option value="Noel">
+                <option value="Artisanat">
+                <option value="Jouet">
+                <option value="Instruments">
+            </datalist>
+            <br>
         <input type="text" name="nom" placeholder="le nom de l'article" value="" required>
         <br>
         <input type="number" name="quantity" placeholder="la quantité" value="" required>

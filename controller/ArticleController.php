@@ -87,6 +87,7 @@ class ArticleController
             $prix_vente = trim($_POST['prixVente']);
             $quantity = trim($_POST['quantity']);
             $image = fopen($_FILES['image']['tmp_name'],'rb');
+            $categorie_id = trim($_POST['categorie']);
 
                 // Error handler
                 /*  
@@ -102,7 +103,7 @@ class ArticleController
                 }  */
 
             //Insert the values in the database
-            $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image);
+            $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie_id);
             
         }
     

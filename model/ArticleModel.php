@@ -53,18 +53,19 @@ class ArticleModel
         }
     }
     // Create function
-    public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image){
+    public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image, $categorie_id){
         //Connect to database
             $pdo = $this->getPDO();
          //Insert script
             $newId = 0;
-            $prep = $pdo->prepare("INSERT INTO Articles (id, nom, quantity, prix_achat, prix_vente, image) VALUES (?,?,?,?,?,?)");    
+            $prep = $pdo->prepare("INSERT INTO Articles (id, nom, quantity, prix_achat, prix_vente, image, categorie_id) VALUES (?,?,?,?,?,?,?)");    
             $prep->bindParam(1,$newId);
             $prep->bindParam(2,$nom);
             $prep->bindParam(3,$quantity);
             $prep->bindParam(4,$prix_achat);
             $prep->bindParam(5,$prix_vente);
             $prep->bindParam(6,$image, PDO::PARAM_LOB);
+            $prep->bindParam(7,$categorie_id);
             
             $pdo->beginTransaction();
             $prep->execute();
