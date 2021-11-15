@@ -18,7 +18,7 @@ class ArticleModel
         $pdo = $this->getPDO();
 
         // Query the db
-        $articles = $pdo->query('SELECT * FROM Articles');
+        $articles = $pdo->query('SELECT * FROM ArticlesMava');
         
         //close connection / release memory
         $pdo = null;
@@ -33,7 +33,7 @@ class ArticleModel
 
         // Query the article by id 
 
-        $prep = $pdo->prepare('SELECT * FROM Articles WHERE id = ?');
+        $prep = $pdo->prepare('SELECT * FROM ArticlesMava WHERE id = ?');
         $prep->bindValue(1,$id, PDO::PARAM_INT);
 
         $result = $prep->execute();
@@ -58,13 +58,13 @@ class ArticleModel
             $pdo = $this->getPDO();
          //Insert script
             $newId = 0;
-            $prep = $pdo->prepare("INSERT INTO Articles (id, nom, quantity, prix_achat, prix_vente, image) VALUES (?,?,?,?,?,?)");    
+            $prep = $pdo->prepare("INSERT INTO ArticlesMava (id, nom, quantity, prix_achat, prix_vente, image) VALUES (?,?,?,?,?,?)");    
             $prep->bindParam(1,$newId);
             $prep->bindParam(2,$nom);
             $prep->bindParam(3,$quantity);
             $prep->bindParam(4,$prix_achat);
             $prep->bindParam(5,$prix_vente);
-            $prep->bindParam(6,$image, PDO::PARAM_LOB);
+            $prep->bindParam(6,$image);
             
             $pdo->beginTransaction();
             $prep->execute();

@@ -43,7 +43,7 @@ class Article{
 
     public function get_image()
     {
-        return '<img src="data:image/jpeg;base64,' .base64_encode($this->image).'"style=width:300px;height:300px;object-fit:cover">';
+        return '<img src="'.$this->image.'"style=width:300px;height:300px;object-fit:cover">';
     }
 
 // Update functions
