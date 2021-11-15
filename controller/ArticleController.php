@@ -86,8 +86,8 @@ class ArticleController
             // On donne une valeur aleatoire au fichier qu'on va uploader et on teste si ce nom existe deja
             $dossier = 'Image/';
             do {
-                $s = rand();
-            } while (is_file($dossier.$s.'.jpg') || is_file($dossier.$s.'.gif')); //$s est le nom du fichier sans l'extension
+                $nom = trim($_POST['nom']);
+            } while (is_file($dossier.$nom.'.jpg') || is_file($dossier.$nom.'.gif')); //$s est le nom du fichier sans l'extension
 
             $file_name = $_FILES['image']['name'];
             $temp_name = $_FILES['image']['tmp_name'];
@@ -100,14 +100,14 @@ class ArticleController
             $Extension = strtolower($Extension);
             
             if((count($AllowedExtensions) > 0 && in_array($file_type, $AllowedExtensions))){
-               if(copy($temp_name,$dossier.$s.'.'.$Extension)){
+               if(copy($temp_name,$dossier.$nom.'.'.$Extension)){
                    $up = true;
 
                    //'Le fichier est valide';
                    $msg = 'Le fichier est valide';
 
                    // On récupere le nom du fichier uploadé
-                    $nomdufichier = $s.'.'.$Extension;
+                    $nomdufichier = $nom.'.'.$Extension;
                 }
             }else {
                 $up = false;
@@ -120,7 +120,7 @@ class ArticleController
                 // Chemin du fichier uploadé
                 $image = $dossier.$nomdufichier;
                 // TODO Take the rest
-                $nom = trim($_POST['nom']);
+               
                 $prix_achat = trim($_POST['prixAchat']);
                 $prix_vente = trim($_POST['prixVente']);
                 $quantity = trim($_POST['quantity']);

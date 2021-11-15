@@ -80,8 +80,8 @@ class ArticleModel
             //Connect to database
             $pdo = $this->getPDO();
             //Update
-            $prep = $pdo->prepare("UPDATE Articles SET `image` = ?  WHERE `id`=?");    
-            $prep->bindParam(1,$image, PDO::PARAM_LOB);
+            $prep = $pdo->prepare("UPDATE ArticlesMava SET `image` = ?  WHERE `id`=?");    
+            $prep->bindParam(1,$image);
             $prep->bindParam(2,$id);
             $pdo->beginTransaction();
             $prep->execute();
@@ -93,7 +93,7 @@ class ArticleModel
          //Connect to database
          $pdo = $this->getPDO();
          //Update
-         $prep = $pdo->prepare("UPDATE Articles SET `nom` = ?  WHERE `id`=?");    
+         $prep = $pdo->prepare("UPDATE ArticlesMava SET `nom` = ?  WHERE `id`=?");    
          $prep->bindParam(1,$nom);
          $prep->bindParam(2,$id);
          $pdo->beginTransaction();
@@ -106,7 +106,7 @@ class ArticleModel
         //Connect to database
         $pdo = $this->getPDO();
         //Update
-        $prep = $pdo->prepare("UPDATE Articles SET `prix_vente` = ?  WHERE `id`=?");    
+        $prep = $pdo->prepare("UPDATE ArticlesMava SET `prix_vente` = ?  WHERE `id`=?");    
         $prep->bindParam(1,$prixV);
         $prep->bindParam(2,$id);
         $pdo->beginTransaction();
@@ -119,7 +119,7 @@ class ArticleModel
     //Connect to database
     $pdo = $this->getPDO();
     //Update
-    $prep = $pdo->prepare("UPDATE Articles SET `prix_achat` = ?  WHERE `id`=?");    
+    $prep = $pdo->prepare("UPDATE ArticlesMava SET `prix_achat` = ?  WHERE `id`=?");    
     $prep->bindParam(1,$prixA);
     $prep->bindParam(2,$id);
     $pdo->beginTransaction();
@@ -132,7 +132,7 @@ class ArticleModel
     //Connect to database
     $pdo = $this->getPDO();
     //Update
-    $prep = $pdo->prepare("UPDATE Articles SET `quantity` = ?  WHERE `id`=?");    
+    $prep = $pdo->prepare("UPDATE ArticlesMava SET `quantity` = ?  WHERE `id`=?");    
     $prep->bindParam(1,$quantity);
     $prep->bindParam(2,$id);
     $pdo->beginTransaction();
@@ -144,7 +144,7 @@ class ArticleModel
     //DELETE FUNCTION
     public function deleteArticle($id){
         $pdo = $this->getPDO();
-        $prep = $pdo->prepare("DELETE FROM `Articles` WHERE `id`=?");    
+        $prep = $pdo->prepare("DELETE FROM `ArticlesMava` WHERE `id`=?");    
         $prep->bindParam(1,$id);
         $pdo->beginTransaction();
         $prep->execute();
