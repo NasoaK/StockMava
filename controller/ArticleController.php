@@ -68,6 +68,8 @@ class ArticleController
 
             //DELETE 
             if(isset($_POST['deleteArticle'])){
+                $nom = $article->get_nom();
+                $this->_model->deleteImage($nom);
                 $this->_model->deleteArticle($id);
             }
         }
@@ -88,7 +90,7 @@ class ArticleController
             $prix_achat = trim($_POST['prixAchat']);
             $prix_vente = trim($_POST['prixVente']);
             $quantity = trim($_POST['quantity']);
-            $image = $this->_model->addimage($nom);
+            $image = $this->_model->addImage($nom);
             
             //Insert the values in the database
             $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image);

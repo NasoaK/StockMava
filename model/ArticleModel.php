@@ -53,7 +53,7 @@ class ArticleModel
         }
     }
     //* Add image function
-    public function addimage($nom){
+    public function addImage($nom){
 
         $file_name = $_FILES['image']['name'];
         $temp_name = $_FILES['image']['tmp_name'];
@@ -180,11 +180,15 @@ class ArticleModel
 
     //*DELETE FUNCTION
 
-    public function deleteimage($nom){
+    public function deleteImage($nom){
         $jpg = '.jpg';
+        $jpeg = '.jpeg';
         $png = '.png';
         $gif = '.gif';
-        
+        unlink ('Image/'.$nom.$jpg) ;
+         unlink('Image/'.$nom.$jepg) ;
+          unlink('Image/'.$nom.$png) ;
+           unlink('Image/'.$nom.$gif);
     }
 
     public function deleteArticle($id){
