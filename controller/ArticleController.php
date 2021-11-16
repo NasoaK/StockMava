@@ -46,7 +46,9 @@ class ArticleController
             //update the article
             
             if(isset($_POST['updateImage'])){
-                $image = fopen($_FILES['image']['tmp_name'],'rb');
+                $nom = $article->get_nom();
+                $this->_model->deleteImage($nom);
+                $image = $this->_model->addImage($nom);
                 $this->_model->updateImage($image, $id);
             }
             if(isset($_POST['updateNom'])){
@@ -84,18 +86,13 @@ class ArticleController
         //Check if form is submited
         if(isset($_POST['submit'])){
 
-            // !! TODO Image upload in dir
-            // On donne une valeur aleatoire au fichier qu'on va uploader et on teste si ce nom existe deja
             $nom = trim($_POST['nom']);
             $prix_achat = trim($_POST['prixAchat']);
             $prix_vente = trim($_POST['prixVente']);
             $quantity = trim($_POST['quantity']);
             $image = $this->_model->addImage($nom);
             
-            //Insert the values in the database
             $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image);
-
-            //!!! END Image upload
 
                 // Error handler
                 /*  

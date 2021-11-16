@@ -8,6 +8,7 @@ class Article{
     private $prix_achat;
     private $prix_vente;
     private $image;
+    private $categorie;
  
 
 // Get functions

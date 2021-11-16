@@ -16,16 +16,16 @@ class ArticleModel
     public function getArticles(){
         //connect to db
         $pdo = $this->getPDO();
-
         // Query the db
         $articles = $pdo->query('SELECT * FROM ArticlesMava');
-        
         //close connection / release memory
         $pdo = null;
-        
         // Fetch and return
         return $articles->fetchAll(PDO::FETCH_CLASS, 'Article');
     }
+
+
+
 
     public function getArticleById($id){
         //Connect to db
@@ -51,6 +51,8 @@ class ArticleModel
         } else{
             echo 'prb';
         }
+
+
     }
     //* Add image function
     public function addImage($nom){
@@ -181,14 +183,10 @@ class ArticleModel
     //*DELETE FUNCTION
 
     public function deleteImage($nom){
-        $jpg = '.jpg';
-        $jpeg = '.jpeg';
-        $png = '.png';
-        $gif = '.gif';
-        unlink ('Image/'.$nom.$jpg) ;
-         unlink('Image/'.$nom.$jepg) ;
-          unlink('Image/'.$nom.$png) ;
-           unlink('Image/'.$nom.$gif);
+        unlink ('Image/'.$nom.'.jpg') ;
+        unlink('Image/'.$nom.'.png') ;
+        unlink('Image/'.$nom.'.gif');
+        unlink('Image/'.$nom.'.jpeg') ;
     }
 
     public function deleteArticle($id){
