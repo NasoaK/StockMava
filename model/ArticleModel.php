@@ -13,11 +13,16 @@ class ArticleModel
     }
     //Get all article 
 
-    public function getArticles(){
+    public function getArticles($categ){
         //connect to db
         $pdo = $this->getPDO();
         // Query the db
-        $articles = $pdo->query('SELECT * FROM ArticlesMava');
+        $articles = $pdo->query("SELECT * FROM ArticlesMava $categ" );
+
+        //$articles = $pdo->query(' SELECT * FROM `ArticlesMava` WHERE');  
+ 
+
+        //SELECT *FROM ArticlesMava INNER JOIN CategoriesMava ON ArticlesMava.categorie_id = CategoriesMava.id; WHERE ArticleMava.categorie_id = 1
         //close connection / release memory
         $pdo = null;
         // Fetch and return
@@ -74,11 +79,12 @@ class ArticleModel
         
         if((count($AllowedExtensions) > 0 && in_array($file_type, $AllowedExtensions))){
             if(copy($temp_name,$dossier.$nom.'.'.$Extension)){
-            $up = true;
+                //if(copy($temp_name,$dossier.$nom.$Extension)){
+                $up = true;
             //'Le fichier est valide';
             $msg = 'Le fichier est valide';
             // On récupere le nom du fichier uploadé
-                $nomdufichier = $nom.'.'.$Extension;
+                $nomdufichier = $nom.$Extension;
             }
         }else {
             $up = false;
@@ -92,19 +98,19 @@ class ArticleModel
     }
 
     //* Create function
-    public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image){
+    public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image,$categorie){
         //Connect to database
             $pdo = $this->getPDO();
          //Insert script
             $newId = 0;
-            $prep = $pdo->prepare("INSERT INTO ArticlesMava (id, nom, quantity, prix_achat, prix_vente, image) VALUES (?,?,?,?,?,?)");    
+            $prep = $pdo->prepare("INSERT INTO ArticlesMava (id, nom, quantity, prix_achat, prix_vente, image,categorie) VALUES (?,?,?,?,?,?,?)");    
             $prep->bindParam(1,$newId);
             $prep->bindParam(2,$nom);
             $prep->bindParam(3,$quantity);
             $prep->bindParam(4,$prix_achat);
             $prep->bindParam(5,$prix_vente);
             $prep->bindParam(6,$image);
-            
+            $prep->bindParam(7,$categorie);
             $pdo->beginTransaction();
             $prep->execute();
             $pdo->commit();

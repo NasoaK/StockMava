@@ -13,20 +13,47 @@ class ArticleController
 
     public function handleArticles(){
         
-        //1. Ask the model the article list
-        
-        $articles = $this->_model->getArticles();
+        // If a categorie is pick  WHERE `categorie` = "instruments" 
 
-        //2 Check/ Do the Validations
-        if(count($articles)==0){
-    
-            $message = "No Articles found.";
-            require_once 'View/ErrorView.php';
-        } else{
+   
 
-        //3. Pass the Article's list to the view
-        require_once 'View/ArticleView.php';
-    }
+        if(isset($_POST['instruments'])){
+
+            $categ = ' WHERE `categorie` = "instruments"';
+                      $articles = $this->_model->getArticles($categ);
+
+        }elseif(isset($_POST['artisanat'])){
+
+            $categ = 'WHERE `categorie` = "artisanat"';
+                      $articles = $this->_model->getArticles($categ);
+        }
+        elseif(isset($_POST['jouets'])){
+
+            $categ = 'WHERE `categorie` = "jouet"';
+                      $articles = $this->_model->getArticles($categ);
+
+        }elseif(isset($_POST['noel'])){
+
+            $categ = 'WHERE `categorie` = "noel"';
+                      $articles = $this->_model->getArticles($categ);
+        }else{
+
+            $categ = '';
+            
+            //1. Ask the model the article list
+            $articles = $this->_model->getArticles($categ);
+            
+        }
+            //2 Check/ Do the Validations
+            if(count($articles)==0){
+                
+                $message = "No Articles found.";
+                require_once 'View/ErrorView.php';
+            } else{
+                
+                //3. Pass the Article's list to the view
+                require_once 'View/ArticleView.php';
+            }
     }
 
     public function handleArticle($id){
@@ -91,8 +118,8 @@ class ArticleController
             $prix_vente = trim($_POST['prixVente']);
             $quantity = trim($_POST['quantity']);
             $image = $this->_model->addImage($nom);
-            
-            $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image);
+            $categorie = trim($_POST['categorie']);
+            $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image,$categorie);
 
                 // Error handler
                 /*  

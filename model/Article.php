@@ -39,8 +39,9 @@ class Article{
 
     public function get_categorie()
     {
-        return $this->categorie_id;
+        return $this->categorie;
     }
+
 
     public function get_image()
     {

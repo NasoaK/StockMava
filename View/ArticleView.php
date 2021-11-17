@@ -10,6 +10,25 @@
     
 <h2> Stock List</h2>
 
+<form action="" method="post">
+    <input type="submit" value="jouets" name="jouets">
+</form>
+
+<form action="" method="post">
+    <input type="submit" value="Instruments" name ="instruments">
+</form>
+
+<form action="" method="post">
+    <input type="submit" value="Artisanat" name="artisanat">
+</form>
+
+<form action="" method="post">
+    <input type="submit" value="Noel" name="noel">
+</form>
+
+
+
+
 <?php foreach ($articles as $article) : ?>
 
     <section>
