@@ -1,0 +1,41 @@
+#categ-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  padding: 20px;
+}
+
+.categ-button {
+  width: 20vw;
+  height: 30px;
+}
+.categ-button-active {
+  background-color: red;
+}
+.categ-button:hover {
+}
+
+#container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+.card {
+  overflow: hidden;
+  margin: 20px;
+  background-color: rgba(220, 190, 158, 1);
+  border-radius: 20px;
+}
+
+.img-pos {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-img {
+  position: relative;
+}

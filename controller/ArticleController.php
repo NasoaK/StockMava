@@ -119,7 +119,7 @@ class ArticleController
             $quantity = trim($_POST['quantity']);
             $image = $this->_model->addImage($nom);
             $categorie = trim($_POST['categorie']);
-            $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image,$categorie);
+            $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie);
 
                 // Error handler
                 /*  

@@ -69,7 +69,7 @@ class ArticleModel
 
         do {
             
-        } while (is_file($dossier.$nom.'.jpg') || is_file($dossier.$nom.'.gif')); 
+        } while (is_file($dossier.$nom.'.jpg') || is_file($dossier.$nom.'.png')); 
             
         // On defini les types de fichiers autorisés, ici seuls les jpg et les png sont acceptés
         $AllowedExtensions = array('image/jpeg', 'image/png', 'image/gif') ;
@@ -84,7 +84,7 @@ class ArticleModel
             //'Le fichier est valide';
             $msg = 'Le fichier est valide';
             // On récupere le nom du fichier uploadé
-                $nomdufichier = $nom.$Extension;
+                $nomdufichier = $nom.'.'.$Extension;
             }
         }else {
             $up = false;
@@ -103,7 +103,8 @@ class ArticleModel
             $pdo = $this->getPDO();
          //Insert script
             $newId = 0;
-            $prep = $pdo->prepare("INSERT INTO ArticlesMava (id, nom, quantity, prix_achat, prix_vente, image,categorie) VALUES (?,?,?,?,?,?,?)");    
+            $categ_id = 3;
+            $prep = $pdo->prepare("INSERT INTO ArticlesMava (id, nom, quantity, prix_achat, prix_vente, image,categorie,categorie_id) VALUES (?,?,?,?,?,?,?,?)");    
             $prep->bindParam(1,$newId);
             $prep->bindParam(2,$nom);
             $prep->bindParam(3,$quantity);
@@ -111,6 +112,8 @@ class ArticleModel
             $prep->bindParam(5,$prix_vente);
             $prep->bindParam(6,$image);
             $prep->bindParam(7,$categorie);
+            $prep->bindParam(8,$categ_id);
+
             $pdo->beginTransaction();
             $prep->execute();
             $pdo->commit();

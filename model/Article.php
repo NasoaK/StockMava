@@ -45,7 +45,8 @@ class Article{
 
     public function get_image()
     {
-        return '<img src="'.$this->image.'"style=width:300px;height:300px;object-fit:cover">';
+        return '<img  class="card-img"  src="'.$this->image.'" style="width:250px;height:250px;object-fit:cover">';
+      
     }
 
 // Update functions

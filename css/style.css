@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: "Oswald", sans-serif;
+  color: rgba(114, 77, 38, 1);
+}
+
+.rgba-primary-0 {
+  color: rgba(158, 131, 103, 1);
+} /* Main Primary color */
+.rgba-primary-1 {
+  color: rgba(253, 223, 192, 1);
+}
+.rgba-primary-2 {
+  color: rgba(220, 190, 158, 1);
+}
+.rgba-primary-3 {
+  color: rgba(122, 85, 47, 1);
+}
+.rgba-primary-4 {
+  color: rgba(114, 77, 38, 1);
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  height: fit-content;
+  background-color: rgba(158, 131, 103, 1);
+}
+
+h1 {
+  text-align: center;
+}
+nav {
+  width: 100vw;
+  padding: 0;
+  height: 20vh;
+}
+ul {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+li {
+  width: 10vw;
+  box-shadow: 10px 5px 5px rgb(255, 255, 255);
+}
+a {
+  width: 10vw;
+  text-align: center;
+  box-shadow: 10px 5px 5px rgb(255, 255, 255);
+}
+
+.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10vw;
+  transition: 0.5s;
+  background-color: rgba(253, 223, 192, 1);
+  color: rgba(114, 77, 38, 1);
+  border-radius: 20px;
+  padding: 10px;
+  height: 35px;
+}
+
+.nav-link-active {
+  background-color: rgba(114, 77, 38, 1);
+  color: rgba(253, 223, 192, 1);
+}
+
+.nav-link:hover {
+  background-color: rgba(114, 77, 38, 1);
+  color: rgba(253, 223, 192, 1);
+}

@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -14,13 +17,13 @@
         
         <ul>
             <li>
-                <a href="index.php">Home</a>
+                <a href="index.php" class="nav-link <?php echo ($_GET['page']== "" ? "nav-link-active" : "")?>">Home</a>
             </li>
             <li>
-                <a href="?page=Articles">List stock</a>
+                <a href="?page=Articles" class=" nav-link <?php echo ($_GET['page'] == "Articles" ? "nav-link-active" : "")?>" >List stock</a>
             </li>
             <li>
-                <a href="?page=Ajouter">Ajouter article</a>
+                <a href="?page=Ajouter" class="nav-link <?php echo ($_GET['page'] == "Ajouter" ? "nav-link-active" : "")?>">Ajouter article</a>
             </li>
         </ul>
     </nav>
