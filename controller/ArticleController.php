@@ -121,6 +121,9 @@ class ArticleController
             $categorie = trim($_POST['categorie']);
             $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie);
 
+            // Test recherche dynamique Work 
+            //SELECT * FROM `ArticlesMava` WHERE nom LIKE '%a%'
+
                 // Error handler
                 /*  
                     $errors = array();
