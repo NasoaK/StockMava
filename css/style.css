@@ -28,7 +28,7 @@ body {
   width: 100vw;
   overflow-x: hidden;
   height: fit-content;
-  background-color: rgba(158, 131, 103, 1);
+  background-color: red;
 }
 
 h1 {

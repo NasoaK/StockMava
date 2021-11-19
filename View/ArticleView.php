@@ -37,7 +37,9 @@
     <div id="container">
             <?php foreach ($articles as $article) : ?>
 <div class="card">
-    <p class="img-pos"><?= $article->get_image();?></p>
+    <p class="img-pos">
+    <?= $article->get_image();?>
+    </p>
     <p>Name : <?= $article->get_nom();?></p>
     <p> Prix d'achat : <?= $article->get_prix_achat(); ?></p>
     <p> Prix de vente : <?= $article->get_prix_vente(); ?></p>
