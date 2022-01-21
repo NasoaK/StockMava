@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)http://localhost/stockMava/index.php?page=Articles&id=86 -->
+<html lang="en"><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><style lang="en" type="text/css" id="dark-mode-native-style"></style><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Document_files/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./Document_files/css2" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+
+
+    <nav>
+    <div id="logo-box">
+        <img id="logo" src="./Document_files/Mava.jpeg">
+        <h1> Stock MavaUnivers</h1>
+
+    </div>
+        <div id="menu">
+
+            <div id="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li>
+                    <a href="http://localhost/stockMava/index.php" class="nav-link ">Home</a>
+                </li>
+                <li>
+                    <a href="http://localhost/stockMava/index.php?page=Ventes" class=" nav-link ">Ventes du Jour</a>
+                </li>
+                <li>
+                    <a href="http://localhost/stockMava/index.php?page=Articles" class=" nav-link nav-link-active">List stock</a>
+                </li>
+                <li>
+                    <a href="http://localhost/stockMava/index.php?page=Ajouter" class="nav-link  ">Ajouter article</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script src="./Document_files/script.js"></script>
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="./Document_files/article-detail.css">
+
+<style>
+    html{
+        overflow:hidden;
+    }
+</style>
+
+    <div class="container">
+        <div class="img-container">
+            <img class="card-img" src="./Document_files/Boucle de Rideau, bonhomme neige Noel.jpeg" style=""><p></p>
+            <form action="http://localhost/stockMava/index.php?page=Articles&amp;id=86" method="post" enctype="multipart/form-data" id="updatePhoto">
+                <input type="file" name="image" required="">
+                <button name="updateImage">changer photo</button>
+            </form>
+        </div>
+
+          <!-- UPDATE FORM -->
+
+        <div class="text-container">
+            
+
+            <form action="http://localhost/stockMava/index.php?page=Articles&amp;id=86" method="POST">
+            <p>Nom</p>
+                <input size="39" type="text" name="nom" value="Boucle de Rideau, bonhomme neige Noel" required=""> 
+                <button name="updateNom">changer nom</button>
+                <span id="icon-photo"></span>
+            </form>
+            <br>
+            
+            <form action="http://localhost/stockMava/index.php?page=Articles&amp;id=86" method="POST">
+            <p>Prix d'achat</p>
+                <input type="number" name="prixA" value="0" required="">
+                <button name="updatePrixAchat"> Changer achat</button>
+            </form>
+            <br>
+
+            
+            <form action="http://localhost/stockMava/index.php?page=Articles&amp;id=86" method="POST">
+            <p>Prix de vente</p>
+                <input type="number" name="prixV" value="6.00" required="">
+                <button t="" name="updatePrixVente">changer prix</button>
+            </form>
+            <br>
+          
+            <form action="http://localhost/stockMava/index.php?page=Articles&amp;id=86" method="POST">
+            <p>Quantité</p>
+                <input type="number" name="quantity" value="1" required="">
+                <button name="updateQuantity">changer quantité </button>
+            </form>
+            <!-- DELETE FORM -->
+
+            <button id="delete-btn">Supprimer L'article</button>
+            </div>
+    </div>
+    <br>
+  
+
+    <!-- Modal Form -->
+
+<div id="modal-container">
+ 
+    <div id="modal">
+
+        <div id="warning-delete">
+
+            <h2>Attention !</h2>
+            <img src="./Document_files/warning.png" alt="" srcset="">
+            <h4>Voulez vous supprimer cet article définitivement</h4>
+            
+            <div class="modal-box-btn">
+            <button id="keep">garder l'article </button>
+            <p>ou</p>
+            <form action="http://localhost/stockMava/index.php?page=Articles&amp;id=86" method="POST" id="delete-form">
+                <button name="deleteArticle" id="delete-art">Supprimer l'article</button>
+            </form>
+            </div>
+        </div>
+
+        <div id="success-delete">
+            <h2>Success</h2>
+            <img src="./Document_files/delete.png" alt="">
+
+            <h4> L'article a bien été supprimer</h4>
+
+            <button class="close" style="background-color:#E29F72"> fermer</button>
+
+        </div>
+    </div>
+
+</div>
+    
+
+
+
+
+
+    <script>
+
+    const deleFakeBtn = document.querySelector('#delete-btn');
+    const modal = document.getElementById('modal-container');
+    const keep = document.getElementById('keep');
+    const deleteArt = document.querySelector('#delete-art');
+    const closeBtn = document.querySelector('.close');
+    const warning = document.querySelector('#warning-delete');
+    const success = document.querySelector('#success-delete');
+console.log(deleteArt)
+
+
+    console.log(deleFakeBtn);
+    deleFakeBtn.addEventListener('click',()=>{
+        modal.style.display ="flex";
+    });
+
+    keep.addEventListener('click',(event)=>{
+        modal.style.display ="none";
+        event.stopPropagation();
+    });
+
+
+    function deleteF(){
+
+        allowSubmit = false;
+        //deleteArt.addEventListener('form', (event)=>{
+            document.getElementById('delete-form').addEventListener('submit', (event)=>{
+
+            event.preventDefault();
+    
+                warning.style.display = "none";
+                success.style.display = "block";
+                
+         /*    }
+            
+            setTimeout(() => {
+                allowSubmit = true;
+            }, 3000); */
+            
+        });
+        
+        closeBtn.addEventListener('click',()=>{
+            modal.style.display ="none";
+            warning.style.display = "flex";
+            success.style.display = "none";
+            location.replace('index.php?page=Articles');
+            
+        }) 
+    }
+    
+   
+
+    deleteF();
+    /* closeBtn.addEventListener('click',()=>{
+        modal.style.display ="none";
+        warning.style.display = "flex";
+        success.style.display = "none";
+
+    }) */
+
+
+    </script>
+
+
+<script>
+
+    button = document.querySelector('#burger-btn');
+    bars = document.querySelectorAll('#burger-btn span');
+    console.log(bars[0]);  
+    //bars[0]
+
+    </script></body></html>

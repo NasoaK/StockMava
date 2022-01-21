@@ -1,32 +1,19 @@
-#background{
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* background-image: url("https://wallpaperaccess.com/full/662638.jpg"); */
-    background-image:url("../dist/delicate-arch-night-stars-landscape.jpeg");
-    z-index: -1;
-    position: absolute;
-    top: 0;
+
+
+tr:nth-child(even) {background: #CCC; padding: 5px;} ;
+tr:nth-child(odd) {background: #FFF; padding: 5px;}
+th{ padding: 5px;}
+
+.container{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+}
+table{
+margin: 40px;
+padding: 7px;
 }
 
 
-#earth{
-width: 100vw;
-height: 50vh;
-bottom: 0;
-position: absolute;
-z-index: 1;
-}
-
-#sil{
-    object-fit: cover;
-    position: absolute;
-   filter: brightness(0%);
-    bottom: 0;
-    z-index: 100;
-
-
-}

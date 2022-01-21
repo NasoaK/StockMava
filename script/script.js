@@ -1,5 +1,5 @@
    const navLink = document.querySelectorAll('.nav-link');
-   console.log(navLink);
+   //console.log(navLink);
   
    let allowNav = false
 
@@ -16,3 +16,7 @@
     allowNav = false
     
    })
+
+
+
+ 

@@ -2,56 +2,155 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <link rel="stylesheet" href="css/article-detail.css?V=<?php echo time(); ?>">
 </head>
+<style>
+    html{
+        overflow:hidden;
+    }
+</style>
 
-<body>
-    <h2>Article</h2>
-    <p><?= $article->get_image();?></p>
-    <p>Name : <?= $article->get_nom(); ?></p>
-    <p>Prix achat : <?= $article->get_prix_achat(); ?></p>
-    <p>Prix vente : <?= $article->get_prix_vente(); ?></p>
-    <p>Quantité : <?= $article->get_quantity(); ?></p>
-    <br>
-    <!-- UPDATE FORM -->
-    <p>Modifier photo</p>
-    <form action="" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" required>
-        <input type="submit" name="updateImage" value="changer photo" required>
-    </form>
-    <br>
-    <p>Modifier nom</p>
-    <form action="" method="POST">
-        <input type="text" name="nom">
-        <input type="submit" name="updateNom" value="changer nom" required>
-    </form>
-    <br>
-    <p>Modifier prix d'achat</p>
-    <form action="" method="POST">
-        <input type="number" name="prixA">
-        <input type="submit" name="updatePrixAchat" value="changer prix" required>
-    </form>
-    <br>
+    <div class="container">
+        <div class="img-container">
+            <?= $article->get_image();?></p>
+            <form action="" method="post" enctype="multipart/form-data" id="updatePhoto">
+                <input type="file" name="image" required>
+                <button name="updateImage">changer photo</button>
+            </form>
+        </div>
 
-    <p>Modifier prix de vente</p>
-    <form action="" method="POST">
-        <input type="number" name="prixV">
-        <input type="submit" name="updatePrixVente" value="changer prix" required>
-    </form>
+          <!-- UPDATE FORM -->
+
+        <div class="text-container">
+            
+
+            <form action="" method="POST" >
+            <p>Nom</p>
+                <input size="39" type="text" name="nom" value="<?= $article->get_nom(); ?>"required> 
+                <button name="updateNom" >changer nom</button>
+                <span id="icon-photo"></span>
+            </form>
+            <br>
+            
+            <form action="" method="POST">
+            <p>Prix d'achat</p>
+                <input type="number" name="prixA" step="0.01"value="<?= $article->get_prix_achat(); ?>" required>
+                <button name="updatePrixAchat"> Changer achat</button>
+            </form>
+            <br>
+
+            
+            <form action="" method="POST">
+            <p>Prix de vente</p>
+                <input type="number" name="prixV"  value="<?= $article->get_prix_vente(); ?>"required>
+                <button t name="updatePrixVente">changer prix</button>
+            </form>
+            <br>
+          
+            <form action="" method="POST">
+            <p>Quantité</p>
+                <input type="number" name="quantity" value="<?= $article->get_quantity(); ?>"required>
+                <button name="updateQuantity">changer quantité </button>
+            </form>
+            <!-- DELETE FORM -->
+
+            <button id="delete-btn">Supprimer L'article</button>
+            </div>
+    </div>
     <br>
-    <p>Modifier quantité</p>
-    <form action="" method="POST">
-        <input type="number" name="quantity">
-        <input type="submit" name="updateQuantity" value="changer quantité" required>
-    </form>
-    <!-- DELETE FORM -->
-    <p>Supprimer l'article</p>
-    <form action="" method="POST">
-        <input type="submit" name="deleteArticle" value="supprimer l'article">
-    </form>
+  
 
-</body>
+    <!-- Modal Form -->
 
-</html>
+<div id="modal-container">
+ 
+    <div id="modal">
+
+        <div id="warning-delete">
+
+            <h2>Attention !</h2>
+            <img src="dist/warning.png" alt="" srcset="" >
+            <h4>Voulez vous supprimer cet article définitivement</h4>
+            
+            <div class="modal-box-btn">
+            <button id="keep">garder l'article </button>
+            <p>ou</p>
+          
+                <button id="delete-art">Supprimer l'article</button>
+            </div>
+        </div>
+
+        <div id="success-delete">
+            <h2>Success</h2>
+            <img src="dist/delete.png" alt="">
+
+            <h4> L'article a bien été supprimer</h4>
+            <a href="?page=Articles">
+            <form action="" method="POST" id="delete-form">
+                 <button name="deleteArticle" class="close" style="background-color:#E29F72"> fermer</button>
+             </a>
+            </form>
+        </div>
+    </div>
+
+</div>
+    
+
+
+
+
+
+    <script>
+
+    const deleFakeBtn = document.querySelector('#delete-btn');
+    const modal = document.getElementById('modal-container');
+    const keep = document.getElementById('keep');
+    const deleteArt = document.querySelector('#delete-art');
+    const closeBtn = document.querySelector('.close');
+    const warning = document.querySelector('#warning-delete');
+    const success = document.querySelector('#success-delete');
+console.log(deleteArt)
+
+
+    console.log(deleFakeBtn);
+    deleFakeBtn.addEventListener('click',()=>{
+        modal.style.display ="flex";
+    });
+
+    keep.addEventListener('click',(event)=>{
+        modal.style.display ="none";
+        event.stopPropagation();
+    });
+
+
+    function deleteF(){
+
+        allowSubmit = false;
+  
+            document.getElementById('delete-art').addEventListener('click', ()=>{
+    
+                warning.style.display = "none";
+                success.style.display = "block";
+            
+        });
+        
+        closeBtn.addEventListener('click',()=>{
+            modal.style.display ="none";
+            warning.style.display = "flex";
+            success.style.display = "none";
+            location.replace('?page=Articles')
+        }) 
+    }
+    
+   
+
+    deleteF();
+    /* closeBtn.addEventListener('click',()=>{
+        modal.style.display ="none";
+        warning.style.display = "flex";
+        success.style.display = "none";
+
+    }) */
+
+
+    </script>

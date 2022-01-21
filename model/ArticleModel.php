@@ -20,7 +20,6 @@ class ArticleModel
         $articles = $pdo->query("SELECT * FROM ArticlesMava $categ" );
 
         //$articles = $pdo->query(' SELECT * FROM `ArticlesMava` WHERE');  
- 
 
         //SELECT *FROM ArticlesMava INNER JOIN CategoriesMava ON ArticlesMava.categorie_id = CategoriesMava.id; WHERE ArticleMava.categorie_id = 1
         //close connection / release memory
@@ -29,6 +28,24 @@ class ArticleModel
         return $articles->fetchAll(PDO::FETCH_CLASS, 'Article');
     }
 
+        //TODO New Ventes
+
+        public function newVente($nom,$prix,$id){
+            $pdo = $this->getPDO();
+
+            $sql = "INSERT INTO Vente (nom, prix) VALUE (?,?); 
+                     UPDATE `ArticlesMava` SET `quantity`= quantity - 1 WHERE id = (?); ";
+            //$prep = $pdo->prepare('INSERT INTO Vente (nom, prix) VALUE (?,?)');
+            $prep = $pdo->prepare($sql);
+            $prep->bindValue(1,$nom);
+            $prep->bindValue(2,$prix);
+            $prep->bindValue(3,$id);
+            $result = $prep->execute();
+            $pdo = null;
+            
+            
+
+        }
 
 
 
@@ -135,6 +152,8 @@ class ArticleModel
             $prep->execute();
             $pdo->commit();
             $pdo = null;
+            header("Location: ?page=Articles&id=$id");      
+            exit();
     }
 
     public function updateNom($nom,$id){
@@ -148,6 +167,8 @@ class ArticleModel
          $prep->execute();
          $pdo->commit();
          $pdo = null;
+         header("Location: ?page=Articles&id=$id");      
+         exit();
     }
 
     public function updatePrixVente($prixV,$id){
@@ -161,6 +182,8 @@ class ArticleModel
         $prep->execute();
         $pdo->commit();
         $pdo = null;
+        header("Location: ?page=Articles&id=$id");      
+        exit();
    }
 
    public function updatePrixAchat($prixA,$id){
@@ -174,6 +197,8 @@ class ArticleModel
     $prep->execute();
     $pdo->commit();
     $pdo = null;
+    header("Location: ?page=Articles&id=$id");      
+    exit();
 }
 
    public function updateQuantity($quantity,$id){
@@ -187,6 +212,8 @@ class ArticleModel
     $prep->execute();
     $pdo->commit();
     $pdo = null;
+    header("Location: ?page=Articles&id=$id");      
+    exit();
     }
 
     //*DELETE FUNCTION

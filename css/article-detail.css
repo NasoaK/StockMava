@@ -1,0 +1,226 @@
+body{
+    overflow: hidden;
+}
+.container{
+    width : 70vw;
+    height: fit-content;
+    padding: 20px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-self: center;
+    justify-content: center;
+    background-color: #F3F2E7;
+    border-radius: 12px;
+    height: fit-content;
+
+}
+
+.card-img {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.img-container{
+    position: relative;
+    height: 90%;
+    width: 90%;
+}
+
+#updatePhoto{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+input[type="file"]{
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   width: 40px;
+   border-radius: 100%;
+   border: 1px solid red;
+   cursor: pointer;
+background-image: url('../dist/1200px-Picture_icon_BLACK.svg.png');
+    object-fit: cover;
+}
+
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 50px;
+    position: relative;
+}
+
+p{
+    font-size: 25px;
+   /*  color: #FFB300; */
+   color: #E29F72;
+
+}
+
+input{
+    font-size: 20px;
+    color: black;
+}
+
+input[type="text"], input[type=number]{
+    background-color: rgba(255, 255, 255, 0) ;
+    border:none;
+    transition: 1s;
+}
+
+form:hover input[type="text"], form:hover input[type=number]{
+    background-color: white;
+    transition: 0.3s;
+}
+
+button, #delete-form input{
+    padding: 5px 15px;
+    border: none;
+    transition:0.5s; 
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.text-container button{
+    /* background-color: #45C5D4 ; */
+    background-color: #2FB0AB;
+    color: white;
+    opacity:0;
+   
+}
+form:hover button{
+    opacity:1;
+    display: inline;
+}
+
+
+#delete-btn{
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    background-color:red;
+    opacity: 1;
+}
+
+/* TODO Modal */
+
+#modal-container{
+    background-color: #0000007e;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    padding: 12vh 15vw;
+    display: none;
+}
+
+#modal{
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+}
+
+
+#modal img{
+    width:200px; height:150px; object-fit:contain
+}
+#modal h2{
+    margin-bottom: 40px;
+    font-size: 30px;
+    color: #e27272;
+}
+#modal h4{
+    margin-bottom: 40px;
+    color: #E29F72;
+}
+
+.modal-box-btn{
+    display: flex;
+}
+#success-delete{
+    display: none;
+}
+#modal button{
+    border-radius: 12px;
+    color: white;
+   width: 200px;
+   height: 50px;
+    font-size: 20px;
+    margin: 0px 15px;
+}
+
+#modal #keep{background-color: #4ae93f;}
+
+#delete-art{background-color:red;}
+
+@media (max-width: 767px) { 
+
+    
+    .container{
+        display: block;
+        width: 88vw;
+        height: 80vh;
+        
+    }
+
+    .img-container{
+        height: 45%;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .card-img {
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+    .text-container{
+        justify-content: flex-start;
+        padding-left: 0;
+        height: 55%;
+    }
+
+    p{
+        font-size: 12px;
+    }
+
+    .modal-box-btn{
+        display: block;
+    }
+    #modal button{
+        margin:15px 0px;
+    }
+    
+    #delete {
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 5px;
+    }
+
+    input[type="text"], input[type=number]{
+        font-size: 15px;
+    }
+
+
+    #modal-container{
+        padding: 15vh 30px;
+    }
+}
+
+

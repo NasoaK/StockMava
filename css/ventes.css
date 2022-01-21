@@ -1,0 +1,14 @@
+
+
+    tr:nth-child(even) {background: #CCC};
+    tr:nth-child(odd) {background: #FFF}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+table{
+    margin: 40px;
+}

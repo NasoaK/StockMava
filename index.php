@@ -12,21 +12,36 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Stock MavaUnivers</h1>
+
 
     <nav>
-        
-        <ul>
-            <li>
-                <a href="index.php" class="nav-link <?php echo ($_GET['page']== "" ? "nav-link-active" : "")?>">Home</a>
-            </li>
-            <li>
-                <a href="?page=Articles" class=" nav-link <?php echo ($_GET['page'] == "Articles" ? "nav-link-active" : "")?>" >List stock</a>
-            </li>
-            <li>
-                <a href="?page=Ajouter" class="nav-link <?php echo ($_GET['page'] == "Ajouter" ? "nav-link-active" : "")?>">Ajouter article</a>
-            </li>
-        </ul>
+    <div id="logo-box">
+        <img id="logo" src="Mava.jpeg">
+        <h1> Stock MavaUnivers</h1>
+
+    </div>
+        <div id="menu">
+
+            <div id="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li>
+                    <a href="index.php" class="nav-link <?php echo ($_GET['page']== "" ? "nav-link-active" : "")?>">Home</a>
+                </li>
+                <li>
+                    <a href="?page=Ventes" class=" nav-link <?php echo ($_GET['page'] == "Ventes" ? "nav-link-active" : "")?>" >Ventes du Jour</a>
+                </li>
+                <li>
+                    <a href="?page=Articles" class=" nav-link <?php echo ($_GET['page'] == "Articles" ? "nav-link-active" : "")?>" >List stock</a>
+                </li>
+                <li>
+                    <a href="?page=Ajouter" class="nav-link <?php echo ($_GET['page'] == "Ajouter" ? "nav-link-active" : "")?> ">Ajouter article</a>
+                </li>
+            </ul>
+        </div>
     </nav>
     <script src="script/script.js"></script>
 </body>
@@ -58,6 +73,12 @@ if(isset($_GET['page'])){
 
     }
     
+    elseif($_GET['page'] =='Ventes'){
+
+        require_once 'controller/VenteController.php';
+        $venteCtrl = new VenteController();
+        $venteCtrl->handleVentes();
+    }
     // Error view
     else {
         $message = '404, this page doesnt exist';
@@ -66,7 +87,56 @@ if(isset($_GET['page'])){
 }
 
 else{
-    require_once 'View/HomeView.php';
+    require_once 'controller/ArticleController.php';
+    $articleCtrl = new ArticleController();
+    $articleCtrl->stockRecap();
 };
 
 ?>
+
+
+<script>
+
+    button = document.querySelector('#burger-btn');
+    bars = document.querySelectorAll('#burger-btn span');
+    menu = document.querySelector('#menu');
+    console.log(bars[0]);  
+    //bars[0]
+    mobileMenu= false;
+
+    function menuAnimation(){
+        mobileMenu = !mobileMenu;
+
+        if(mobileMenu){
+            bars[0].style.top = '50%';
+            bars[0].style.height = "5px";
+            bars[0].style.transform = "translateY(-50%)rotateZ(-45deg)";
+            bars[1].style.opacity = 0
+            bars[2].style.transform = "translateY(-50%)rotateZ(45deg)"; 
+            bars[2].style.top = "50%";
+            bars[2].style.height = "5px";
+            menu.style.height = "100vh";
+            setTimeout(() => {
+                menu.querySelector('ul').style.display = "flex";
+                setTimeout(() => {
+                    menu.querySelector('ul').style.opacity = "1";
+                }, 200);
+            }, 150);
+        }
+        else{
+            bars[0].style.top = '0';
+            bars[0].style.height = "5px";
+            bars[0].style.transform = null;
+            bars[1].style.opacity = 1
+            bars[2].style.transform = null; 
+            bars[2].style.top = null;
+            bars[2].style.height = "5px";
+            menu.style.height = "100%";
+            menu.querySelector('ul').style.display = "none";
+            menu.querySelector('ul').style.opacity = 0;
+        }
+    }
+
+    button.addEventListener('click',menuAnimation);
+    menu.querySelector('ul').addEventListener('click',menuAnimation);
+    </script>

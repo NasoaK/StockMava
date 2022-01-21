@@ -11,11 +11,38 @@ class ArticleController
         $this->_model = new ArticleModel();
     }
 
+    public function stockRecap(){
+        $filtre = ' ORDER BY `nom` ASC ';
+        $filtre = '';
+        if(isset($_POST['tri-btn'])){
+            $categ = trim($_POST['filtre-tri']);
+            $direction = trim($_POST['direction-tri']);
+            $filtre = "`$categ` $direction";
+            $query= 'ORDER BY '.$filtre;
+            $articles = $this->_model->getArticles($query);
+        }else {
+            $articles = $this->_model->getArticles($filtre);
+        }
+
+
+
+        //2 Check/ Do the Validations
+        if(count($articles)==0){
+                
+            $message = "No Articles found.";
+            require_once 'View/ErrorView.php';
+        } else{
+            
+            //3. Pass the Article's list to the view
+            require_once 'View/HomeView.php';
+        }
+
+
+    }
+
     public function handleArticles(){
         
         // If a categorie is pick  WHERE `categorie` = "instruments" 
-
-   
 
         if(isset($_POST['instruments'])){
 
@@ -54,6 +81,16 @@ class ArticleController
                 //3. Pass the Article's list to the view
                 require_once 'View/ArticleView.php';
             }
+
+
+             // TODO Ajouter Vente du jour
+    
+            if(isset($_POST['newVente'])){
+                $nom = trim($_POST['nom']);
+                $prix = trim($_POST['prix']);
+                $id = trim($_POST['id']);
+                $this->_model->newVente($nom,$prix,$id);
+            }
     }
 
     public function handleArticle($id){
@@ -77,22 +114,27 @@ class ArticleController
                 $this->_model->deleteImage($nom);
                 $image = $this->_model->addImage($nom);
                 $this->_model->updateImage($image, $id);
+               
             }
             if(isset($_POST['updateNom'])){
                 $nom = trim($_POST['nom']);
                 $this->_model->updateNom($nom, $id);
+               
             }
             if(isset($_POST['updatePrixAchat'])){
                 $prixA = trim($_POST['prixA']);
                 $this->_model->updatePrixAchat($prixA, $id);
+                
             }
             if(isset($_POST['updatePrixVente'])){
                 $prixV = trim($_POST['prixV']);
                 $this->_model->updatePrixVente($prixV, $id);
+              
             }
             if(isset($_POST['updateQuantity'])){
                 $quantity = trim($_POST['quantity']);
                 $this->_model->updateQuantity($quantity, $id);
+               
             }
 
             //DELETE 
@@ -100,10 +142,15 @@ class ArticleController
                 $nom = $article->get_nom();
                 $this->_model->deleteImage($nom);
                 $this->_model->deleteArticle($id);
+                require_once 'View/errorView.php';     
             }
         }
     }
 
+
+
+
+   
     // TODO POST ARTICLE
     public function addArticle(){
 
@@ -137,8 +184,6 @@ class ArticleController
                     
                 }  */
 
-
-       
             
         }
     
