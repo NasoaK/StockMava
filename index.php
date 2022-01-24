@@ -16,8 +16,8 @@
 
     <nav>
     <div id="logo-box">
-        <img id="logo" src="Mava.jpeg">
-        <h1> Stock MavaUnivers</h1>
+        <img id="logo" src="kossobe.png">
+        <h1> Stock</h1>
 
     </div>
         <div id="menu">
