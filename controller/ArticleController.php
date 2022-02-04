@@ -49,10 +49,6 @@ class ArticleController
             $categ = ' WHERE `categorie` = "instruments"';
                       $articles = $this->_model->getArticles($categ);
 
-        }elseif(isset($_POST['artisanat'])){
-
-            $categ = 'WHERE `categorie` = "artisanat"';
-                      $articles = $this->_model->getArticles($categ);
         }
         elseif(isset($_POST['jouets'])){
 
@@ -63,10 +59,17 @@ class ArticleController
 
             $categ = 'WHERE `categorie` = "noel"';
                       $articles = $this->_model->getArticles($categ);
-        }else{
+
+        }elseif(isset($_POST['searchB'])){
+            $categ = 'WHERE `name` LIKE "%a%"';
+            $articles = $this->_model->getArticles($categ);
+
+        }
+        else{
 
             $categ = '';
             
+
             //1. Ask the model the article list
             $articles = $this->_model->getArticles($categ);
             

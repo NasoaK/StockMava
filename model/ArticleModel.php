@@ -14,18 +14,20 @@ class ArticleModel
     //Get all article 
 
     public function getArticles($categ){
-        //connect to db
-        $pdo = $this->getPDO();
-        // Query the db
-        $articles = $pdo->query("SELECT * FROM ArticlesMava $categ" );
 
-        //$articles = $pdo->query(' SELECT * FROM `ArticlesMava` WHERE');  
 
-        //SELECT *FROM ArticlesMava INNER JOIN CategoriesMava ON ArticlesMava.categorie_id = CategoriesMava.id; WHERE ArticleMava.categorie_id = 1
-        //close connection / release memory
-        $pdo = null;
-        // Fetch and return
-        return $articles->fetchAll(PDO::FETCH_CLASS, 'Article');
+
+            //connect to db
+            $pdo = $this->getPDO();
+            // Query the db
+            $articles = $pdo->query("SELECT * FROM ArticlesMava $categ" );
+            
+            //close connection / release memory
+            // Fetch and return
+            $pdo = null;
+            return $articles->fetchAll(PDO::FETCH_CLASS, 'Article');
+    
+
     }
 
         //TODO New Ventes

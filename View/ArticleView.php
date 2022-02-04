@@ -38,6 +38,9 @@
 
 
 
+<form action="" method="post">
+    <input type="submit" value="rechercher" name="searchB">
+</form>
 
 <section>
 
@@ -55,8 +58,9 @@
     <button>
          <a>Stock instruments excel</a>
     </button>
-
 </div>
+
+
     <div id="container">
             <?php foreach ($articles as $article) : ?>
                 
