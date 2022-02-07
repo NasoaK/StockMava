@@ -132,12 +132,10 @@ class ArticleModel
             $prep->bindParam(6,$image);
             $prep->bindParam(7,$categorie);
             $prep->bindParam(8,$categ_id);
-
             $pdo->beginTransaction();
             $prep->execute();
             $pdo->commit();
             $pdo = null;
-           
            // $prep->execute(array(0,$nom,$quantity,$prix,$image));
     
     }
@@ -154,8 +152,8 @@ class ArticleModel
             $prep->execute();
             $pdo->commit();
             $pdo = null;
-            header("Location: ?page=Articles&id=$id");      
-            exit();
+           // header("location:index.php?page=Articles&id=$id");    
+            header("Location: http://www.youtube.com");
     }
 
     public function updateNom($nom,$id){
@@ -170,7 +168,6 @@ class ArticleModel
          $pdo->commit();
          $pdo = null;
          header("Location: ?page=Articles&id=$id");      
-         exit();
     }
 
     public function updatePrixVente($prixV,$id){
@@ -184,7 +181,8 @@ class ArticleModel
         $prep->execute();
         $pdo->commit();
         $pdo = null;
-        header("Location: ?page=Articles&id=$id");      
+          
+        header("Location: http://www.youtube.com");   
         exit();
    }
 

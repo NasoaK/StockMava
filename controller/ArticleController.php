@@ -148,7 +148,7 @@ class ArticleController
                 require_once 'View/errorView.php'; 
               
                 // Redirect
-                header('Location: http://www.youtube.com');
+                header('location: http://www.youtube.com');
                 exit();
 
             }
@@ -175,7 +175,7 @@ class ArticleController
             $image = $this->_model->addImage($nom);
             $categorie = trim($_POST['categorie']);
             $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie);
-
+            
             // Test recherche dynamique Work 
             //SELECT * FROM `ArticlesMava` WHERE nom LIKE '%a%'
 
