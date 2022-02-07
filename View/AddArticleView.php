@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=$, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="css/home.css?V=<?php echo time(); ?>">
 </head>
 
 
@@ -22,9 +24,9 @@
         <br>
         <input type="number" name="quantity" placeholder="la quantité" value="" required>
         <br>
-        <input type="number" name="prixAchat" id="" placeholder="le prix d'achat" value="" required>
+        <input type="number" name="prixAchat" id="" placeholder="le prix d'achat" value="" step ="0.1" required>
         <br>
-        <input type="number" name="prixVente" id="" placeholder="le prix de vente" value="" required>
+        <input type="number" name="prixVente" id="" placeholder="le prix de vente" value="" step ="0.1" required>
         <br>
         <input type="file" name="image" id="" value="" required>
          <br>

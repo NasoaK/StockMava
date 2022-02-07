@@ -139,6 +139,9 @@ console.log(deleteArt)
             warning.style.display = "flex";
             success.style.display = "none";
             location.replace('?page=Articles')
+            setTimeout(() => {
+                window.location.replace("http://www.w3schools.com");
+            }, 1500);
         }) 
     }
     

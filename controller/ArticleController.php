@@ -145,7 +145,12 @@ class ArticleController
                 $nom = $article->get_nom();
                 $this->_model->deleteImage($nom);
                 $this->_model->deleteArticle($id);
-                require_once 'View/errorView.php';     
+                require_once 'View/errorView.php'; 
+              
+                // Redirect
+                header('Location: http://www.youtube.com');
+                exit();
+
             }
         }
     }
