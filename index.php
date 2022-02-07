@@ -45,6 +45,10 @@
                 <li>
                     <a href="?page=Ajouter" class="nav-link <?php echo ($_GET['page'] == "Ajouter" ? "nav-link-active" : "")?> ">Ajouter article</a>
                 </li>
+
+                <li>
+                    <a href="?page=Categories" class="nav-link <?php echo ($_GET['page'] == "Categories" ? "nav-link-active" : "")?>">Modifier Categorie</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -83,6 +87,13 @@ if(isset($_GET['page'])){
         require_once 'controller/VenteController.php';
         $venteCtrl = new VenteController();
         $venteCtrl->handleVentes();
+    }
+
+    // Manage Categories
+    elseif($_GET['page']=='Categories'){
+        require_once 'controller/articleController.php';
+        $articleCtrl = new ArticleController();
+        $articleCtrl->manageCategories();
     }
     // Error view
     else {

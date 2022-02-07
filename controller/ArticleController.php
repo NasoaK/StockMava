@@ -157,6 +157,13 @@ class ArticleController
 
 
 
+    // TODO Manage Categories 
+    // Manage Categories
+    public function manageCategories(){
+
+        require_once 'View/CategoriesView.php';
+
+    }
 
    
     // TODO POST ARTICLE
@@ -175,7 +182,7 @@ class ArticleController
             $image = $this->_model->addImage($nom);
             $categorie = trim($_POST['categorie']);
             $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie);
-            
+
             // Test recherche dynamique Work 
             //SELECT * FROM `ArticlesMava` WHERE nom LIKE '%a%'
 
