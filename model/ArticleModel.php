@@ -1,7 +1,7 @@
 <?php
 
 require_once 'Article.php';
-
+require_once 'Categorie.php';
 
 class ArticleModel
 {
@@ -15,8 +15,6 @@ class ArticleModel
 
     public function getArticles($categ){
 
-
-
             //connect to db
             $pdo = $this->getPDO();
             // Query the db
@@ -27,7 +25,15 @@ class ArticleModel
             $pdo = null;
             return $articles->fetchAll(PDO::FETCH_CLASS, 'Article');
     
+    }
 
+    // Comment get categ 
+    public function getCategories(){
+        
+        $pdo = $this->getPDO();
+        $categories = $pdo->query("SELECT * FROM CategoriesMava" );
+        return $categories->fetchAll();
+        $pdo = null;
     }
 
         //TODO New Ventes
@@ -44,8 +50,6 @@ class ArticleModel
             $prep->bindValue(3,$id);
             $result = $prep->execute();
             $pdo = null;
-            
-            
 
         }
 
@@ -120,9 +124,9 @@ class ArticleModel
     public function addCategorie($nom){
         // Connect to database
         $pdo = $this->getPDO();
-
-
     }
+
+
 
     //* Create function
     public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image,$categorie){

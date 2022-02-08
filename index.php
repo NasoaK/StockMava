@@ -75,7 +75,10 @@ if(isset($_GET['page'])){
     } 
     //Route for adding article
     else if($_GET['page']=='Ajouter'){
-
+        /* require_once 'controller/CategorieController.php';
+        $categCtrl = new CategorieController();
+        $categories = $categCtrl->getCategories();
+ */
         require_once 'controller/ArticleController.php';
         $articleCtrl = new ArticleController();
         $articleCtrl->addArticle();

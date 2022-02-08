@@ -172,41 +172,45 @@ class ArticleController
    
     // TODO POST ARTICLE
     public function addArticle(){
-
-        require_once 'View/AddArticleView.php';
-        
-
-        //Check if form is submited
-        if(isset($_POST['submit'])){
-
-            $nom = trim($_POST['nom']);
-            $prix_achat = trim($_POST['prixAchat']);
-            $prix_vente = trim($_POST['prixVente']);
-            $quantity = trim($_POST['quantity']);
-            $image = $this->_model->addImage($nom);
-            $categorie = trim($_POST['categorie']);
-            $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie);
-
-            // Test recherche dynamique Work 
-            //SELECT * FROM `ArticlesMava` WHERE nom LIKE '%a%'
-
+        $categories = $this->_model->getCategories();
+        $count = count($categories);
+            //3. Pass the Article's list to the view
+            require_once 'View/AddArticleView.php';
+    
+            
+            
+            //Check if form is submited
+            if(isset($_POST['submit'])){
+                
+                $nom = trim($_POST['nom']);
+                $prix_achat = trim($_POST['prixAchat']);
+                $prix_vente = trim($_POST['prixVente']);
+                $quantity = trim($_POST['quantity']);
+                $image = $this->_model->addImage($nom);
+                $categorie = trim($_POST['categorie']);
+                $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie);
+                
+                // Test recherche dynamique Work 
+                //SELECT * FROM `ArticlesMava` WHERE nom LIKE '%a%'
+                
                 // Error handler
                 /*  
-                    $errors = array();
-                    if(empty($name)){ array_push($errors, "Il manque le nom de l'article");}
-                    if(empty($prix)){ array_push($errors, "Il manque un prix à l'article");}
-                    if(empty($quantity)){ array_push($errors, "Il manque la quantité de l'article");}
-
-                    var_dump($errors);
-
-                    if(count($errors)==0){
+                $errors = array();
+                if(empty($name)){ array_push($errors, "Il manque le nom de l'article");}
+                if(empty($prix)){ array_push($errors, "Il manque un prix à l'article");}
+                if(empty($quantity)){ array_push($errors, "Il manque la quantité de l'article");}
+                
+                var_dump($errors);
+                
+                if(count($errors)==0){
                     
                 }  */
-
+                
+                
+            }
+        
             
         }
-    
-    }
     
     
 

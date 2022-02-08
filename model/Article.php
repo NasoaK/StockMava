@@ -48,8 +48,5 @@ class Article{
         return '<img  class="card-img"  src="'.$this->image.'" style="">';
         //return $this->image;
     }
-
-// Update functions
-
     
 }

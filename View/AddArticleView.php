@@ -13,13 +13,15 @@
  
 <div class="container">
 
-
+<p><?= $count; ?></p>
+ 
     <form action="" method="post" enctype="multipart/form-data">
 
     <h3>Ajoute un Article</h3>
     <p>*Tu pourra le modifier plus tard</p>
         <label for="categ">Categorie</label>
         <select name="categorie" id="categ">
+        
             <option value="Jouet">Jouet</option>
             <option value="instruments">instruments</option>
             <option value="Artisanat">Artisanat</option>
