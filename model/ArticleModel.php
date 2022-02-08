@@ -116,6 +116,14 @@ class ArticleModel
         }
     }
 
+    // TODO Function Create new Categories
+    public function addCategorie($nom){
+        // Connect to database
+        $pdo = $this->getPDO();
+
+
+    }
+
     //* Create function
     public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image,$categorie){
         //Connect to database

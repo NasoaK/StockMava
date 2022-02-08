@@ -160,8 +160,12 @@ class ArticleController
     // TODO Manage Categories 
     // Manage Categories
     public function manageCategories(){
-
         require_once 'View/CategoriesView.php';
+
+        if(isset($_POST['addCategorie'])){
+            $nom = trim($_POST['nom']);
+            
+        }
 
     }
 
