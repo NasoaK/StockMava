@@ -187,8 +187,8 @@ class ArticleController
                 $prix_vente = trim($_POST['prixVente']);
                 $quantity = trim($_POST['quantity']);
                 $image = $this->_model->addImage($nom);
-                $categorie = trim($_POST['categorie']);
-                $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie);
+                $categorie_id = trim($_POST['categorie']);
+                $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie_id);
                 
                 // Test recherche dynamique Work 
                 //SELECT * FROM `ArticlesMava` WHERE nom LIKE '%a%'

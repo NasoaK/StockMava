@@ -129,12 +129,12 @@ class ArticleModel
 
 
     //* Create function
-    public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image,$categorie){
+    public function postArticle($nom,$prix_achat, $prix_vente,$quantity,$image,$categorie_id){
         //Connect to database
             $pdo = $this->getPDO();
          //Insert script
             $newId = 0;
-            $categ_id = 3;
+            $categorie="Jouet";
             $prep = $pdo->prepare("INSERT INTO ArticlesMava (id, nom, quantity, prix_achat, prix_vente, image,categorie,categorie_id) VALUES (?,?,?,?,?,?,?,?)");    
             $prep->bindParam(1,$newId);
             $prep->bindParam(2,$nom);
@@ -143,7 +143,7 @@ class ArticleModel
             $prep->bindParam(5,$prix_vente);
             $prep->bindParam(6,$image);
             $prep->bindParam(7,$categorie);
-            $prep->bindParam(8,$categ_id);
+            $prep->bindParam(8,$categorie_id);
             $pdo->beginTransaction();
             $prep->execute();
             $pdo->commit();

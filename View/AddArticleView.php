@@ -21,11 +21,9 @@
     <p>*Tu pourra le modifier plus tard</p>
         <label for="categ">Categorie</label>
         <select name="categorie" id="categ">
-        
-            <option value="Jouet">Jouet</option>
-            <option value="instruments">instruments</option>
-            <option value="Artisanat">Artisanat</option>
-            <option value="Noel">Noel</option>
+        <?php foreach ($categories as $categorie) : ?>
+            <option value="<?= $categorie[0];?>"> <?= $categorie[1];?></option>
+        <?php endforeach ;?>
         </select>
         <label for="nom">Nom</label>
         <input id="nom" type="text" name="nom" placeholder="le nom de l'article" value="" required>
@@ -40,11 +38,6 @@
         <input id="submit" type="submit" value="Ajouter Article" name="submit" placeholder="submit">
     </form>
 </div>
-<script>
-    document.querySelector('#submit').addEventListener('click',()=>{
-        alert('click');
-    })
-</script>
 </body>
 </html>
 
