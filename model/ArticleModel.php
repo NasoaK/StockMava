@@ -29,7 +29,6 @@ class ArticleModel
 
     // Comment get categ 
     public function getCategories(){
-        
         $pdo = $this->getPDO();
         $categories = $pdo->query("SELECT * FROM CategoriesMava" );
         return $categories->fetchAll();

@@ -34,6 +34,7 @@
 
 
 
+
 </div>
 
 
@@ -60,8 +61,20 @@
     </button>
 </div>
 
+<!-- Tri all articles by categories -->
+<form action="" method="POST">
+    <select name="categorie" id="">
+        <option value=""></option>
+        <?php foreach($categories as $categorie) : ?>
+            <option value="<?= $categorie[0];?>"><?= $categorie[1]?></option>
+        <?php endforeach ; ?> 
+    </select>
+    <input type="submit" name="tri-categorie" value="trier par categorie">
+</form>
+
 
     <div id="container">
+
             <?php foreach ($articles as $article) : ?>
                 
                 <div class="card-halo">                    

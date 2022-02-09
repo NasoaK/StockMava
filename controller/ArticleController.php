@@ -42,13 +42,21 @@ class ArticleController
 
     public function handleArticles(){
         
+        $categories = $this->_model->getCategories();
         // If a categorie is pick  WHERE `categorie` = "instruments" 
 
-        if(isset($_POST['instruments'])){
-
-            $categ = ' WHERE `categorie` = "instruments"';
+        if(isset($_POST['tri-categorie'])){
+            $categ_id = trim($_POST['categorie']);
+            if($categ_id){
+                $categ = ' WHERE `categorie_id` = '.$categ_id;
+                      $articles = $this->_model->getArticles($categ);
+            }else{
+                $categ = '';
                       $articles = $this->_model->getArticles($categ);
 
+            }
+
+            
         }
         elseif(isset($_POST['jouets'])){
 
@@ -76,9 +84,13 @@ class ArticleController
         }
             //2 Check/ Do the Validations
             if(count($articles)==0){
-                
                 $message = "No Articles found.";
                 require_once 'View/ErrorView.php';
+            
+            sleep(10);
+            header('Location: https://mikaelkombia.com/KossobeStock/?page=Articles');
+            exit();
+
             } else{
                 
                 //3. Pass the Article's list to the view
