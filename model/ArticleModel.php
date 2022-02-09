@@ -163,8 +163,7 @@ class ArticleModel
             $prep->execute();
             $pdo->commit();
             $pdo = null;
-           // header("location:index.php?page=Articles&id=$id");    
-            header("Location: http://www.youtube.com");
+            header("Refresh:1") ;
     }
 
     public function updateNom($nom,$id){
@@ -178,7 +177,8 @@ class ArticleModel
          $prep->execute();
          $pdo->commit();
          $pdo = null;
-         header("Location: ?page=Articles&id=$id");      
+        // header("Location: ?page=Articles&id=$id"); 
+        header("Refresh:1");
     }
 
     public function updatePrixVente($prixV,$id){
@@ -192,9 +192,10 @@ class ArticleModel
         $prep->execute();
         $pdo->commit();
         $pdo = null;
+        header("Refresh:1") ;
           
-        header("Location: http://www.youtube.com");   
-        exit();
+        //header("Location: http://www.youtube.com");   
+        //exit();
    }
 
    public function updatePrixAchat($prixA,$id){
@@ -208,8 +209,9 @@ class ArticleModel
     $prep->execute();
     $pdo->commit();
     $pdo = null;
-    header("Location: ?page=Articles&id=$id");      
-    exit();
+    header("Refresh:1") ;
+    //header("Location: ?page=Articles&id=$id");      
+    //exit();
 }
 
    public function updateQuantity($quantity,$id){
@@ -222,9 +224,9 @@ class ArticleModel
     $pdo->beginTransaction();
     $prep->execute();
     $pdo->commit();
-    $pdo = null;
-    header("Location: ?page=Articles&id=$id");      
+    $pdo = null;   
     exit();
+    header("Refresh:1") ;
     }
 
     //*DELETE FUNCTION
@@ -244,6 +246,7 @@ class ArticleModel
         $prep->execute();
         $pdo->commit();
         $pdo = null;
+        header("Location: http://www.youtube.com/");
     }
 
 }

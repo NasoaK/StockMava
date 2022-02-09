@@ -66,7 +66,7 @@ if(isset($_GET['page'])){
         //Aricle Controller
         require_once 'controller/ArticleController.php';
         $articleCtrl = new ArticleController();
-
+        
         if(!isset($_GET['id']))
         $articleCtrl->handleArticles();
         else{

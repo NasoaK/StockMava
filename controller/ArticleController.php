@@ -84,14 +84,11 @@ class ArticleController
         }
             //2 Check/ Do the Validations
             if(count($articles)==0){
-                $message = "No Articles found.";
-                require_once 'View/ErrorView.php';
-            
-            header("location:javascript://history.go(-1)");
-            exit();
 
-            } else{
                 
+                $message = "Aucun article trouvés dans la categorie." ;
+                require_once 'View/ErrorView.php';
+            } else{
                 //3. Pass the Article's list to the view
                 require_once 'View/ArticleView.php';
             }
@@ -117,9 +114,7 @@ class ArticleController
             $message = 'No Article found with id :' .$id;
             require_once 'View/errorView.php';
         } else{
-            // Pass the specifiq article to the view
-            require_once 'View/ArticleDetailView.php';
-
+            
             //TODO Update the article
             //update the article
             
@@ -128,12 +123,12 @@ class ArticleController
                 $this->_model->deleteImage($nom);
                 $image = $this->_model->addImage($nom);
                 $this->_model->updateImage($image, $id);
-               
+                
             }
             if(isset($_POST['updateNom'])){
                 $nom = trim($_POST['nom']);
                 $this->_model->updateNom($nom, $id);
-               
+                
             }
             if(isset($_POST['updatePrixAchat'])){
                 $prixA = trim($_POST['prixA']);
@@ -157,12 +152,11 @@ class ArticleController
                 $this->_model->deleteImage($nom);
                 $this->_model->deleteArticle($id);
                 require_once 'View/errorView.php'; 
-              
-                // Redirect
-                header('location: http://www.youtube.com');
-                exit();
 
             }
+
+            // Pass the specifiq article to the view
+            require_once 'View/ArticleDetailView.php';
         }
     }
 
@@ -216,7 +210,6 @@ class ArticleController
                 if(count($errors)==0){
                     
                 }  */
-                
                 
             }
         

@@ -94,10 +94,6 @@
     </div>
 
 </div>
-    
-
-
-
 
 
     <script>
@@ -138,16 +134,10 @@ console.log(deleteArt)
             modal.style.display ="none";
             warning.style.display = "flex";
             success.style.display = "none";
-            location.replace('?page=Articles')
-            setTimeout(() => {
-                window.location.replace("http://www.w3schools.com");
-            }, 1500);
         }) 
     }
     
-   
 
-    deleteF();
     /* closeBtn.addEventListener('click',()=>{
         modal.style.display ="none";
         warning.style.display = "flex";
