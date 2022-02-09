@@ -87,8 +87,7 @@ class ArticleController
                 $message = "No Articles found.";
                 require_once 'View/ErrorView.php';
             
-            sleep(10);
-            header('Location: https://mikaelkombia.com/KossobeStock/?page=Articles');
+            header("location:javascript://history.go(-1)");
             exit();
 
             } else{
