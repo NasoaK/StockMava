@@ -56,27 +56,13 @@ class ArticleController
 
             }
 
-            
-        }
-        elseif(isset($_POST['jouets'])){
-
-            $categ = 'WHERE `categorie` = "jouet"';
-                      $articles = $this->_model->getArticles($categ);
-
-        }elseif(isset($_POST['noel'])){
-
-            $categ = 'WHERE `categorie` = "noel"';
-                      $articles = $this->_model->getArticles($categ);
-
         }elseif(isset($_POST['searchB'])){
             $categ = 'WHERE `name` LIKE "%a%"';
             $articles = $this->_model->getArticles($categ);
 
         }
         else{
-
             $categ = '';
-            
 
             //1. Ask the model the article list
             $articles = $this->_model->getArticles($categ);

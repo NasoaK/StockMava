@@ -11,6 +11,9 @@
     <h2>Something bad happened.</h2>
     <p>Message : <?= $message; ?></p>
 
+
+
+    
     <form action="" method="POST">
         <input type="submit" value="Retour" name="retour">
     </form>

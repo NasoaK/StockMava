@@ -1,6 +1,6 @@
 <?php
-require_once 'model/CategorieModel.php';
-
+//require_once 'model/CategorieModel.php';
+require_once 'model/ArticleModel.php';
 
 class CategorieController 
 {
@@ -8,25 +8,20 @@ class CategorieController
 
     public function __construct()
     {
-        $this->_model = new CategorieModel();
-    }
-    // Get Categories
-
-    public function getCategories(){
-        $categories = $this->_model->getCategories(); 
+       // $this->_model = new CategorieModel();
+        $this->_model = new ArticleModel();
     }
 
-
-      // TODO Manage Categories 
     // Manage Categories
     public function manageCategories(){
+        
+        //getCategories();
+        $categories = $this->_model->getCategories();
+        $count = count($categorie);
+        
+        $west = 3 ;
         require_once 'View/CategoriesView.php';
-
-        if(isset($_POST['addCategorie'])){
-            $nom = trim($_POST['nom']);
-            
-        }
-
+        
     }
-
+    
 }

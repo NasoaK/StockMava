@@ -17,6 +17,8 @@ class ArticleModel
 
             //connect to db
             $pdo = $this->getPDO();
+
+            
             // Query the db
             $articles = $pdo->query("SELECT * FROM ArticlesMava $categ" );
             
@@ -119,11 +121,7 @@ class ArticleModel
         }
     }
 
-    // TODO Function Create new Categories
-    public function addCategorie($nom){
-        // Connect to database
-        $pdo = $this->getPDO();
-    }
+   
 
 
 

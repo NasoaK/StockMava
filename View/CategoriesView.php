@@ -5,78 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories View</title>
+    <link rel="stylesheet" href="css/Categories.css?V=<?php echo time();?>">
 </head>
 
-<style>
-/* TODO Modal */
-
-#modal-container{
-    background-color: #0000007e;
-    backdrop-filter: blur(5px);
-    z-index: 1000;
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    padding: 12vh 15vw;
-    display: none;
-}
-
-
-#modal{
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
-    text-align: center;
-}
-
-
-#modal img{
-    width:200px; height:150px; object-fit:contain
-}
-#modal h2{
-    margin-bottom: 40px;
-    font-size: 30px;
-    color: #e27272;
-}
-#modal h4{
-    margin-bottom: 40px;
-    color: #E29F72;
-}
-
-.modal-box-btn{
-    display: flex;
-}
-#success-delete{
-    display: none;
-}
-#modal button{
-    border-radius: 12px;
-    color: white;
-   width: 200px;
-   height: 50px;
-    font-size: 20px;
-    margin: 0px 15px;
-}
-
-#modal #keep{background-color: #4ae93f;}
-
-#delete-art{background-color:red;}
-</style>
 <body>
     <!--  Lister categorie existante -->
     <h3>Toutes les categories</h3>
 
-    <div id="categ-container">
 
-    <?php ?>
+<p> <?= $count; ?> </p>
 
-    </div>
+    <select name="categorie" id="">
+        <option value=""></option>
+
+        <?php foreach($categories as $categorie) : ?>
+            <option value="<?= $categorie[0];?>"><?= $categorie[1] ;?></option>
+        <?php endforeach ; ?> 
+    </select>
+
+
 
 
 
@@ -88,17 +35,6 @@
         <input type="submit" value="Ajouter Categorie" name="addCategorie">
     </form>
 
-    <!-- Supprimer Categories -->
-
-
-    <form action="" method="POST">
-        <h3> Supprimer Categorie</h3>
-        <select name="" id="">
-            <option value="Categorie1">Categorie1</option>
-            <option value="Categorie2">Categorie2</option>
-            <option value="Categorie3">Categorie3</option>
-        </select>
-    </form>
 
  <!-- Modal Form -->
 
