@@ -4,21 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories View</title>
-    <link rel="stylesheet" href="css/Categories.css?V=<?php echo time();?>">
+    <title></title>
+    <link rel="stylesheet" href="css/Categories.css">
 </head>
 
 <body>
     <!--  Lister categorie existante -->
     <h3>Toutes les categories</h3>
 
+<section>
 
-<p> <?= $count; ?> </p>
+    <?php foreach ($categories as $categorie) : ?>
+        <div class="card-categorie">
+            <p>nom</p>
+            <p><?= $categorie[1]; ?></p>
+
+            <p>Nombre d'articles dans la categorie</p>
+            <p><?= $categorie[2]; ?></p>
+
+            <p><?= count($categorie)?></p>
+        </div>
+                
+    <?php endforeach; ?>
+
+
+
+</section>
+
+
 
     <select name="categorie" id="">
         <option value=""></option>
 
-        <?php foreach($categories as $categorie) : ?>
+        <?php foreach ( $categories as $categorie) : ?>
             <option value="<?= $categorie[0];?>"><?= $categorie[1] ;?></option>
         <?php endforeach ; ?> 
     </select>

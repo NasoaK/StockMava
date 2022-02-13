@@ -1,6 +1,6 @@
 <?php
-//require_once 'model/CategorieModel.php';
-require_once 'model/ArticleModel.php';
+require_once 'model/CategorieModel.php';
+//require_once 'model/ArticleModel.php';
 
 class CategorieController 
 {
@@ -8,8 +8,8 @@ class CategorieController
 
     public function __construct()
     {
-       // $this->_model = new CategorieModel();
-        $this->_model = new ArticleModel();
+       $this->_model = new CategorieModel();
+        //$this->_model = new ArticleModel();
     }
 
     // Manage Categories
@@ -17,9 +17,10 @@ class CategorieController
         
         //getCategories();
         $categories = $this->_model->getCategories();
-        $count = count($categorie);
+        //$categories = $this->_model->countCategorie($categoriesInc);
         
-        $west = 3 ;
+        
+  
         require_once 'View/CategoriesView.php';
         
     }

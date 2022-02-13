@@ -85,7 +85,7 @@ if(isset($_GET['page'])){
 
     }
     
-    elseif($_GET['page'] =='Ventes'){
+    else if($_GET['page'] =='Ventes'){
 
         require_once 'controller/VenteController.php';
         $venteCtrl = new VenteController();
@@ -93,9 +93,9 @@ if(isset($_GET['page'])){
     }
 
     // Manage Categories
-    elseif($_GET['page']=='Categories'){
-        require_once 'controller/articleController.php';
-        $articleCtrl = new ArticleController();
+    else if($_GET['page']=='Categories'){
+        require_once 'controller/CategorieController.php';
+        $articleCtrl = new CategorieController();
         $articleCtrl->manageCategories();
     }
     // Error view
