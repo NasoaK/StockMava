@@ -51,9 +51,8 @@
   margin: 10px;
   transition: 0.3s;
   border: 2px solid #ffb30000
-
-
 }
+
 .card {
   overflow: hidden;
   text-overflow: clip;
