@@ -34,6 +34,8 @@
             <div class="categorie-container">
 
                 <?php foreach ($categories as $categorie) : ?>
+                <? var_dump($categorie);?>
+
                     <div class="card">
                         <div class="text-box">
                             <p class="label">nom</p>
@@ -42,10 +44,21 @@
                 
                         <div class="text-box">
                             <p class="label">Nombre d'articles</p>
-                            <p> <span style="color:gray">Soon</span></p>
+                            <p> <span style="color:gray">Soon<?= $count;?></span></p>
+
                         </div>
 
-                            <button id="delete-art">Supprimer</button>
+                        <form action="" class="pCategId">
+                            <input type="number" class="id"name="value" value="<?= $categorie[0]; ?>">
+                            <input type="submit" value="West">
+                        </form>
+                       
+                        <!-- To strict Way no error handling     
+                        <form action="" method="POST">
+                            <input type="number" name="idCateg" value="<?= $categorie[0];?>" style="display:none;">
+                            <input type="submit" value="Supprimer" name="deleteCategorie">
+                        </form> -->
+                            <!-- <button class="delete-btn">Supprimer</button> -->
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -63,37 +76,45 @@
 
  <div id="modal-container">
  
- <div id="modal">
+    <div id="modal">
 
-     <div id="warning-delete">
+        <div id="warning-delete">
 
-         <h2>Attention !</h2>
-         <p>Tout les articles dans cet categorie vont etre supprimer</p>
-         <img src="dist/warning.png" alt="" srcset="" >
-         <h4>Voulez vous supprimer cet article définitivement</h4>
-         
-         <div class="modal-box-btn">
-         <button id="keep">garder la categorie </button>
-         <p>ou</p>
-       
-             <button id="delete-art">Supprimer la categorie</button>
-         </div>
+            <h2>Attention !</h2>
+            <p>Tout les articles dans cet categorie vont etre supprimer</p>
+            <img src="dist/warning.png" alt="" srcset="" >
+            <h4>Voulez vous supprimer cet article définitivement</h4>
+            
+            <div class="modal-box-btn">
+            <button id="keep">garder la categorie </button>
+            <p>ou</p>
+        
+                <button id="delete-art">Supprimer la categorie</button>
+            </div>
 
-     </div>
+        </div>
 
-     <div id="success-delete">
-         <h2>Success</h2>
-         <img src="dist/delete.png" alt="">
+        <!-- <div id="delete-choice">
+                <div class="modal-box-btn">
+                    <button>Garder les articles</button>
+                    <p>ou</p>
+                    <button>Supprimer Tout</button>
+                    </div>
+        </div>
+ -->
+        <div id="success-delete">
+            <h2>Success</h2>
+            <img src="dist/delete.png" alt="">
 
-         <h4> La categorie a bien été supprimer</h4>
-         <a href="?page=Articles">
-         <form action="" method="POST" id="delete-form">
-              <button name="deleteArticle" class="close" style="background-color:#E29F72"> fermer</button>
-          </a>
-         </form>
-     </div>
+            <h4> La categorie a bien été supprimer</h4>
+            <form action="" method="POST" id="delete-form">
+                <input type="number" name="idCateg" id="finalValueCateg" value="">
+                <button name="deleteCategorie" id="close" style="background-color:#E29F72"> fermer</button>
+            </form>
+        </div>
  </div>
 
 </div>
+    <script src="script/categorieScript.js"></script>
 </body>
 </html>

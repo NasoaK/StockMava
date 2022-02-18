@@ -12,17 +12,30 @@ class CategorieController
         //$this->_model = new ArticleModel();
     }
 
+
     // Manage Categories
     public function manageCategories(){
-        
+
         //getCategories();
         $categories = $this->_model->getCategories();
-        //$categories = $this->_model->countCategorie($categoriesInc);
-        
-        
+             //$categories = $this->_model->countCategorie($categoriesInc);
   
-        require_once 'View/CategoriesView.php';
-        
+             
+             //Add Categorie
+             if(isset($_POST['addCategorie'])){
+                 $nom = trim($_POST['nom']);
+                 $this->_model->postCategorie($nom);
+                };
+                
+                // TODO Delete Categorie By ID
+                if(isset($_POST['deleteCategorie'])){
+                    $id = trim($_POST['idCateg']);
+                    $this->_model->delCategorie($id);
+                };
+
+            //Pass the view
+            require_once 'View/CategoriesView.php';
+                
     }
-    
+
 }

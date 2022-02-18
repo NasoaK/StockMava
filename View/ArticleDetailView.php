@@ -97,7 +97,6 @@
 
 
     <script>
-
     const deleFakeBtn = document.querySelector('#delete-btn');
     const modal = document.getElementById('modal-container');
     const keep = document.getElementById('keep');
@@ -105,7 +104,7 @@
     const closeBtn = document.querySelector('.close');
     const warning = document.querySelector('#warning-delete');
     const success = document.querySelector('#success-delete');
-console.log(deleteArt)
+    console.log(deleteArt)
 
 
     console.log(deleFakeBtn);

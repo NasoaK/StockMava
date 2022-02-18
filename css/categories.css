@@ -97,7 +97,7 @@
     color: #E29F72;
 }
 
-.modal-box-btn{
+#modal-box-btn{
     display: flex;
 }
 #success-delete{
