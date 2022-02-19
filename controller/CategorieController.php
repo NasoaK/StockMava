@@ -17,7 +17,7 @@ class CategorieController
     public function manageCategories(){
 
         //getCategories();
-        $categories = $this->_model->getCategories();
+        $categories = $this->_model->getCategoriesC();
              //$categories = $this->_model->countCategorie($categoriesInc);
   
              
@@ -32,6 +32,8 @@ class CategorieController
                     $id = trim($_POST['idCateg']);
                     $this->_model->delCategorie($id);
                 };
+                
+                
 
             //Pass the view
             require_once 'View/CategoriesView.php';

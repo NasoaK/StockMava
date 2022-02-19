@@ -12,16 +12,9 @@
     <!--  Lister categorie existante -->
     
     <!-- !!! Select Foireach categorie -->
-    <!--  <select name="categorie" id="">
-        <option value=""></option>
-        
-        <?php foreach ( $categories as $categorie) : ?>
-            <option value="<?= $categorie[0];?>"><?= $categorie[1] ;?></option>
-            <?php endforeach ; ?> 
-        </select> -->
-        
+
         <div class="ajout-container">
-                <h3> Ajouter categorie</h3>
+                <h3> Ajouter une categorie</h3>
                 <form action="" method="POST">
                     <input type="text" name="nom" id="" placeholder="Nom de la categorie">
                     <input type="submit" value="Ajouter Categorie" name="addCategorie">
@@ -34,31 +27,37 @@
             <div class="categorie-container">
 
                 <?php foreach ($categories as $categorie) : ?>
-                <? var_dump($categorie);?>
 
-                    <div class="card">
-                        <div class="text-box">
-                            <p class="label">nom</p>
-                            <p><?= $categorie[1]; ?></p>
-                        </div>
-                
-                        <div class="text-box">
-                            <p class="label">Nombre d'articles</p>
-                            <p> <span style="color:gray">Soon<?= $count;?></span></p>
-
-                        </div>
-
-                        <form action="" class="pCategId">
-                            <input type="number" class="id"name="value" value="<?= $categorie[0]; ?>">
-                            <input type="submit" value="West">
-                        </form>
-                       
-                        <!-- To strict Way no error handling     
-                        <form action="" method="POST">
-                            <input type="number" name="idCateg" value="<?= $categorie[0];?>" style="display:none;">
-                            <input type="submit" value="Supprimer" name="deleteCategorie">
-                        </form> -->
+                    
+                    <div class="card-halo" style="<?php echo ($categorie[2]["COUNT(categorie_id)"] < 1  ? "border-color:red" : "")?>">
+                    
+                        <div class="card">
+                            <div class="text-box">
+                                <p class="label">nom</p>
+                                <p><?= $categorie[1]; ?></p>
+                            </div>
+                            
+                            <div class="text-box">
+                                <p class="label">Nombre d'articles</p>
+                                <p> <span style="color:gray;<?php echo ($categorie[2]["COUNT(categorie_id)"] < 1 ? "color:red" : "")?>"><?= $categorie[2]["COUNT(categorie_id)"]; ?></span></p>
+                                
+                            </div>
+                            
+                            <form action="" class="pCategId">
+                                <input type="number" class="id"name="value" value="<?= $categorie[0]; ?>" style="display:none">
+                                <input type="submit" value="Supprimer" class="form-supprimer">
+                            </form>
+                            
+                            <?php if($categorie[2]["COUNT(categorie_id)"] < 1) { ?>
+                    <p class="caption"> Il n'ya aucun article lieé à cet categorie</p>
+                    <?php }?>
+                            <!-- To strict Way no error handling     
+                            <form action="" method="POST">
+                                <input type="number" name="idCateg" value="<?= $categorie[0];?>" style="display:none;">
+                                <input type="submit" value="Supprimer" name="deleteCategorie">
+                            </form> -->
                             <!-- <button class="delete-btn">Supprimer</button> -->
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>

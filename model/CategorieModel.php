@@ -20,23 +20,33 @@ class CategorieModel
         $pdo = $this->getPDO();
         
         $categories = $pdo->query("SELECT * FROM CategoriesMava" );
-        $categories->fetchAll();
-        
-
-        // Rajout du compte de categorie dans chaque tableau
-        foreach ( $categories as $categorie){
-            $id = $categorie[0];
-            $count = $pdo->query("SELECT COUNT(categorie_id) FROM ArticlesMava WHERE categorie_id = $id LIMIT 1");
-            $count->fetch();
-            $categorie['count']= $count;
-            //return array_unshift($categorie, $count, 3);
-            //return array_push($categories,$categorie);
-        };
-        
         return $categories->fetchAll();
         $pdo = null;
 
     }
+
+    public function getCategoriesC(){
+        $categories = $this->getCategories();
+
+
+        // Rajout du compte de categorie dans chaque tableau
+        $items = array();
+        foreach ( $categories as $categorie){
+            $pdo = $this->getPDO();
+            $id = $categorie[0];
+            $count = $pdo->query("SELECT COUNT(categorie_id) FROM ArticlesMava WHERE categorie_id = $id LIMIT 1");
+            //$categorie['count']=  $count->fetch();
+            array_push($categorie,$count->fetch());
+            array_push($items,$categorie);
+            //return array_unshift($categorie, $count, 3);
+            //return array_push($categories,$categorie);
+        };
+
+        return $items;
+
+    }
+        
+
     public function postCategorie($nom){
         $pdo = $this->getPDO();
         $prep = $pdo->prepare("INSERT INTO CategoriesMava(id,nom) VALUES (?,?) ");
@@ -72,17 +82,15 @@ class CategorieModel
 
     public function delCategSaveArt($id){
         $pdo = $this->getPDO();
-        $prep = $pdo->prepare("
-        DELETE FROM CategoriesMAva WHERE id = ? ; 
-        UPDATE `ArticlesMava` SET `categorie_id`= 8 WHERE categorie_id = ? ");
-        $prep->bindValue(1, $id);
-        $prep->bindValue(2, $id);
+        $prep = $pdo->prepare("UPDATE ArticlesMava SET categorie_id = 8 WHERE categorie_id = $id");
+        $prep2 = $pdo->prepare("DELETE FROM CategoriesMava WHERE id = $id");
+        $pdo->beginTransaction();
         $prep->execute();
-        $prep->commit();
+        $prep2->execute();
+        $pdo->commit();
         $pdo = null ;
         header("Refresh:1");
         exit();
-
     }
 
 
