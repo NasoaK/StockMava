@@ -32,7 +32,10 @@ class CategorieController
                     $id = trim($_POST['idCateg']);
                     $this->_model->delCategorie($id);
                 };
-                
+                if(isset($_POST['deleteCategorieSaveArt'])){
+                    $id = trim($_POST['idCateg']);
+                    $this->_model->delCategorie($id);
+                };
                 
 
             //Pass the view

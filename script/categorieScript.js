@@ -42,7 +42,7 @@ deleteArt.addEventListener('click', ()=>{
 
 // Get dom element 
 const form = document.querySelectorAll('.pCategId');
-const finalCategValue = document.querySelector('#finalValueCateg');
+const finalCategValue = document.querySelector('.finalValueCateg');
 console.log(form);
 
 // Pass categ value inside value attribute

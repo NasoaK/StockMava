@@ -77,6 +77,7 @@
  
     <div id="modal">
 
+<!-- Warning Delete -->
         <div id="warning-delete">
 
             <h2>Attention !</h2>
@@ -93,14 +94,29 @@
 
         </div>
 
-        <!-- <div id="delete-choice">
+        <!--  <form action="" method="POST" id="delete-form">
+                <input type="number" name="idCateg" id="finalValueCateg" value="">
+                <button name="ConfirmDeleteCategorie" id="close" style="background-color:#E29F72"> fermer</button>
+            </form> -->
+
+<!-- Delete Choice -->
+             <div id="delete-choice">
                 <div class="modal-box-btn">
-                    <button>Garder les articles</button>
+
+                  <form action="" method="POST" id="delete-form">
+                <input type="number" name="idCateg" class="finalValueCateg" value="">
+                <button name="deleteCategorieSaveArt" class="btn-pass-choice" style="background-color:#E29F72"> Garder Les Articles</button>
+            </form>
                     <p>ou</p>
-                    <button>Supprimer Tout</button>
+
+                     <form action="" method="POST" id="delete-form">
+                <input type="number" name="idCateg" class="finalValueCateg" value="">
+                <button name="deleteCategorie" class="btn-pass-choice" style="background-color:#E29F72"> Tout Supprimer</button>
+            </form>
                     </div>
         </div>
- -->
+
+<!-- Success Delete -->
         <div id="success-delete">
             <h2>Success</h2>
             <img src="dist/delete.png" alt="">
@@ -108,7 +124,7 @@
             <h4> La categorie a bien été supprimer</h4>
             <form action="" method="POST" id="delete-form">
                 <input type="number" name="idCateg" id="finalValueCateg" value="">
-                <button name="deleteCategorie" id="close" style="background-color:#E29F72"> fermer</button>
+                <button name="ConfirmDeleteCategorie" id="close" style="background-color:#E29F72"> fermer</button>
             </form>
         </div>
  </div>
