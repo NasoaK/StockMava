@@ -99,7 +99,7 @@
 
             <h4> La categorie a bien été supprimer</h4>
             <form action="" method="POST" id="delete-form">
-                <input type="number" name="idCateg" id="finalValueCateg" value="">
+                <input type="number" name="idCateg" id="finalValueCateg" value="" style="display: none">
                 <button name="deleteCategorie" id="close" style="background-color:#E29F72"> fermer</button>
             </form>
         </div>

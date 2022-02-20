@@ -66,7 +66,7 @@ class CategorieModel
         $pdo = $this->getPDO();
        // $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
         $sql1 = "DELETE FROM CategoriesMava WHERE id = $id";
-    $sql2 = "DELETE FROM ArticlesMava WHERE categorie_id = $id";
+        $sql2 = "DELETE FROM ArticlesMava WHERE categorie_id = $id";
         $prep = $pdo->prepare("DELETE FROM ArticlesMava WHERE categorie_id = $id");
         $prep2 = $pdo->prepare("DELETE FROM CategoriesMava WHERE id = $id");
         $pdo->beginTransaction();
@@ -92,29 +92,6 @@ class CategorieModel
         header("Refresh:1");
         exit();
     } */
-
-
-
-    //TODO Query Qui count le nombre d'articles present dans une categorie 
-    
-    // SELECT COUNT(categorie_id) FROM ArticlesMava WHERE categorie_id = 1; 
-
-    /* public function countCategorie($categories){
-       
-        foreach ( $categories as $categorie){
-            $id = $categorie[0];
-            $pdo = $this->getPDO();
-            $count = $pdo->query("SELECT COUNT(categorie_id) FROM ArticlesMava WHERE categorie_id = $id");
-            $pdo = null;
-            $count;
-            return array_push($categorie, $count); 
-            //return array_unshift($categorie, $count, 3);
-        }
-        return $categories;
-    } */
-    //Query qui rassemble liste les categories de chaque articles
-    //SELECT CategoriesMava.nom, ArticlesMava.categorie_id FROM `CategoriesMava`, ArticlesMava WHERE CategoriesMava.id = ArticlesMava.categorie_id
-
 
     
 }
