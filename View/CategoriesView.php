@@ -81,9 +81,9 @@
         <div id="warning-delete">
 
             <h2>Attention !</h2>
-            <p>Tout les articles dans cet categorie vont etre supprimer</p>
+            <p>Attention en supprimant cette categorie tout ses articles vont disparaitres !</p>
             <img src="dist/warning.png" alt="" srcset="" >
-            <h4>Voulez vous supprimer cet article définitivement</h4>
+            <h4>Voulez vous supprimer cette categorie définitivement</h4>
             
             <div class="modal-box-btn">
             <button id="keep">garder la categorie </button>
@@ -100,7 +100,7 @@
             </form> -->
 
 <!-- Delete Choice -->
-             <div id="delete-choice">
+            <!--  <div id="delete-choice">
                 <div class="modal-box-btn">
 
                   <form action="" method="POST" id="delete-form">
@@ -109,12 +109,12 @@
             </form>
                     <p>ou</p>
 
-                     <form action="" method="POST" id="delete-form">
+                     <form action="" method="POST" id="">
                 <input type="number" name="idCateg" class="finalValueCateg" value="">
                 <button name="deleteCategorie" class="btn-pass-choice" style="background-color:#E29F72"> Tout Supprimer</button>
             </form>
                     </div>
-        </div>
+        </div> -->
 
 <!-- Success Delete -->
         <div id="success-delete">

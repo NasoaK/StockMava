@@ -1,4 +1,3 @@
-
 // Dom element of the modal
 
 const deleFakeBtn = document.querySelector('.delete-btn');
@@ -42,17 +41,22 @@ deleteArt.addEventListener('click', ()=>{
 
 // Get dom element 
 const form = document.querySelectorAll('.pCategId');
-const finalCategValue = document.querySelector('.finalValueCateg');
+const finalCategValue = document.getElementById('finalValueCateg');
+const valueCateg = document.querySelector('#valueCateg');
 console.log(form);
 
+console.log(valueCateg);
 // Pass categ value inside value attribute
 for(const a of form){
     a.addEventListener('submit', (e)=>{
         //alert(e.target.value);
         e.preventDefault();
         e.stopPropagation();
-        console.log(a.children[0].value);
+        const id = a.children[0].value;
         modal.style.display ="flex";
-        finalCategValue.setAttribute('value',a.children[0].value);
+        finalCategValue.setAttribute('value',id);
+
+        //valueCateg.setAttribute('value',id);
+
     })
 }

@@ -66,31 +66,35 @@ class CategorieModel
         $pdo = $this->getPDO();
        // $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
         $sql1 = "DELETE FROM CategoriesMava WHERE id = $id";
-    $sql2 = "DELETE FROM ArticlesMava WHERE categorie_id = $id";
+        $sql2 = "DELETE FROM ArticlesMava WHERE categorie_id = $id";
         $prep = $pdo->prepare("DELETE FROM ArticlesMava WHERE categorie_id = $id");
         $prep2 = $pdo->prepare("DELETE FROM CategoriesMava WHERE id = $id");
-        $pdo->beginTransaction();
-        $prep->execute();
-        $prep2->execute();
-        $pdo->commit();
-        $pdo = null ;
-        header("Refresh:1") ;
-        exit();
+            $pdo->beginTransaction();
+            $prep->execute();
+            $prep2->execute();
+            $pdo->commit();
+            $pdo = null ;
+            header("Refresh:1") ;
+            exit();
     }
 
-    // SAve Articles Form deleted Categorie
-
+    // TODO SAve Articles Form deleted Categorie
+    // Maybe in update
     public function delCategSaveArt($id){
         $pdo = $this->getPDO();
         $prep = $pdo->prepare("UPDATE ArticlesMava SET categorie_id = 8 WHERE categorie_id = $id");
         $prep2 = $pdo->prepare("DELETE FROM CategoriesMava WHERE id = $id");
-        $pdo->beginTransaction();
-        $prep->execute();
-        $prep2->execute();
-        $pdo->commit();
-        $pdo = null ;
-        header("Refresh:1");
-        exit();
+
+        // Send Delete if close btn is clicked
+        if(isset($_POST['ConfirmDeleteCategorie'])){
+            $pdo->beginTransaction();
+            $prep->execute();
+            $prep2->execute();
+            $pdo->commit();
+            $pdo = null ;
+            header("Refresh:1");
+            exit();
+        };
     }
 
 

@@ -28,14 +28,17 @@ class CategorieController
                 };
                 
                 // TODO Delete Categorie By ID
-                if(isset($_POST['deleteCategorie'])){
+                if(isset($_POST['ConfirmDeleteCategorie'])){
                     $id = trim($_POST['idCateg']);
                     $this->_model->delCategorie($id);
                 };
-                if(isset($_POST['deleteCategorieSaveArt'])){
-                    $id = trim($_POST['idCateg']);
-                    $this->_model->delCategorie($id);
-                };
+
+                //TODO Save art on delete
+                // Maybe in update
+                //if(isset($_POST['deleteCategorieSaveArt'])){
+                //    $id = trim($_POST['idCateg']);
+                //   $this->_model->delCategorie($id);
+                //};
                 
 
             //Pass the view
