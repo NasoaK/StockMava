@@ -8,11 +8,14 @@ const deleteArt = document.getElementById('delete-art');
 const closeBtn = document.getElementById('#close');
 const warning = document.querySelector('#warning-delete');
 const success = document.querySelector('#success-delete');
+const body = document.querySelector('body');
 
 // Manage the modal
 
 keep.addEventListener('click',(event)=>{
     modal.style.display ="none";
+    body.style.position = "";
+
 });
 
 deleteArt.addEventListener('click', ()=>{
@@ -49,10 +52,12 @@ console.log(form);
 for(const a of form){
     a.addEventListener('submit', (e)=>{
         //alert(e.target.value);
+        body.style.position = "fixed";
+        const id = a.children[0].value;
         e.preventDefault();
         e.stopPropagation();
-        console.log(a.children[0].value);
+        //console.log(a.children[0].value);
         modal.style.display ="flex";
-        finalCategValue.setAttribute('value',a.children[0].value);
+        finalCategValue.setAttribute('value', id);
     })
 }

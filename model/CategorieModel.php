@@ -80,7 +80,7 @@ class CategorieModel
 
     // SAve Articles Form deleted Categorie
 
-    public function delCategSaveArt($id){
+   /*  public function delCategSaveArt($id){
         $pdo = $this->getPDO();
         $prep = $pdo->prepare("UPDATE ArticlesMava SET categorie_id = 8 WHERE categorie_id = $id");
         $prep2 = $pdo->prepare("DELETE FROM CategoriesMava WHERE id = $id");
@@ -91,7 +91,7 @@ class CategorieModel
         $pdo = null ;
         header("Refresh:1");
         exit();
-    }
+    } */
 
 
 

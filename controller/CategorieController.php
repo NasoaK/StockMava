@@ -28,10 +28,10 @@ class CategorieController
                 };
                 
                 // TODO Delete Categorie By ID
-                if(isset($_POST['deleteCategorie'])){
+                /* if(isset($_POST['deleteCategorie'])){
                     $id = trim($_POST['idCateg']);
                     $this->_model->delCategorie($id);
-                };
+                }; */
                 
                 
 

@@ -80,9 +80,9 @@
         <div id="warning-delete">
 
             <h2>Attention !</h2>
-            <p>Tout les articles dans cet categorie vont etre supprimer</p>
+            <p style="color:red; margin-top:-25px; margin-bottom:15px">En supprimant cet categorie tous les articles liées disparaitrons</p>
             <img src="dist/warning.png" alt="" srcset="" >
-            <h4>Voulez vous supprimer cet article définitivement</h4>
+            <h4>Voulez vous supprimer cette categorie definitevement ?</h4>
             
             <div class="modal-box-btn">
             <button id="keep">garder la categorie </button>
@@ -93,14 +93,6 @@
 
         </div>
 
-        <!-- <div id="delete-choice">
-                <div class="modal-box-btn">
-                    <button>Garder les articles</button>
-                    <p>ou</p>
-                    <button>Supprimer Tout</button>
-                    </div>
-        </div>
- -->
         <div id="success-delete">
             <h2>Success</h2>
             <img src="dist/delete.png" alt="">
