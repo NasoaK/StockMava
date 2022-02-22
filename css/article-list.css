@@ -1,32 +1,6 @@
-#categ-container {
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  padding: 0px;
-  height: 35px;
-  margin-top: -5vh;
-  position: fixed;
-  z-index: 1;
-}
 
-.categ-button {
-  width: 25vw;
-  height: 30px;
-  background-color: #EAE2C2;
-  border: 0;
-  transition: 0.5s;
-}
-.categ-button-active {
-  background-color: #a57f60;
-  color: #EAE2C2;
-  
-}
-.categ-button:hover {
-  border: 2px solid rgba(255, 255, 255, 0.439);
-  background-color: #a57f60;
-  color: #EAE2C2;
-  height: 35px;
-}
+
+
 
 #container {
   display: flex;
@@ -78,9 +52,10 @@
   transition: 1s;
 }
 .card:hover .card-img{
-  width: 110%;
-  height: 110%;
+  /* width: 110%;
+  height: 110%; */
   object-fit: center;
+  transform: scale(1.33, 1.33);
 
 }
 

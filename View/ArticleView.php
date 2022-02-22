@@ -10,32 +10,8 @@
 <body>
     
 
-<div id="categ-container">
-
-<form action="" method="post">
-    <input type="submit" value="tout" name="all" class="categ-button <?php echo (empty($categ) ? "categ-button-active" : "")?>" >
-</form>
-
-    <form action="" method="post" >
-        <input type="submit" value="jouets" name="jouets" class="categ-button <?php echo (isset($_POST['jouets']) ? "categ-button-active" : "")?>">
-    </form>
-    
-    <form action="" method="post" >
-        <input type="submit" value="Instruments" name ="instruments"  class="categ-button <?php echo (isset($_POST['instruments']) ? "categ-button-active" : "")?>">
-</form>
-
-<form action="" method="post" >
-    <input type="submit" value="Artisanat" name="artisanat" class="categ-button <?php echo (isset($_POST['artisanat']) ? "categ-button-active" : "")?>">
-</form>
-
-<form action="" method="post" >
-    <input type="submit" value="Noel" name="noel" class="categ-button <?php echo (isset($_POST['noel']) ? "categ-button-active" : "")?>">
-</form>
 
 
-
-
-</div>
 
 
 

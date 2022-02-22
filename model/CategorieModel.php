@@ -18,8 +18,7 @@ class CategorieModel
     
     public function getCategories(){
         $pdo = $this->getPDO();
-        
-        $categories = $pdo->query("SELECT * FROM CategoriesMava" );
+        $categories = $pdo->query("SELECT * FROM CategoriesMava");
         return $categories->fetchAll();
         $pdo = null;
 
@@ -27,7 +26,6 @@ class CategorieModel
 
     public function getCategoriesC(){
         $categories = $this->getCategories();
-
 
         // Rajout du compte de categorie dans chaque tableau
         $items = array();
@@ -40,6 +38,7 @@ class CategorieModel
             array_push($items,$categorie);
             //return array_unshift($categorie, $count, 3);
             //return array_push($categories,$categorie);
+            $pdo = null;
         };
 
         return $items;

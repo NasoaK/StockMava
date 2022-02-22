@@ -17,26 +17,26 @@ class CategorieController
     public function manageCategories(){
 
         //getCategories();
+        //$categories = $this->_model->countCategorie($categoriesInc);
+        
+        
+        //Add Categorie
+        if(isset($_POST['addCategorie'])){
+            $nom = trim($_POST['nom']);
+            $this->_model->postCategorie($nom);
+        };
+        
+        // TODO Delete Categorie By ID
+        if(isset($_POST['deleteCategorie'])){
+            $id = trim($_POST['idCateg']);
+            $this->_model->delCategorie($id);
+        };
+        
         $categories = $this->_model->getCategoriesC();
-             //$categories = $this->_model->countCategorie($categoriesInc);
-  
-             
-             //Add Categorie
-             if(isset($_POST['addCategorie'])){
-                 $nom = trim($_POST['nom']);
-                 $this->_model->postCategorie($nom);
-                };
-                
-                // TODO Delete Categorie By ID
-                if(isset($_POST['deleteCategorie'])){
-                    $id = trim($_POST['idCateg']);
-                    $this->_model->delCategorie($id);
-                };
-                
                 
 
             //Pass the view
-            require_once 'View/CategoriesView.php';
+        require_once 'View/CategoriesView.php';
                 
     }
 

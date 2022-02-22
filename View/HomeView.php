@@ -66,11 +66,7 @@
     
     </div>
  
-    <?php
-      $array = array(1,2,3,4,5,6);
-      echo 'bonjour';
-      echo json_encode($array);
-    ?>
+
     
     <script>
        /*  var responce = JSON.parse(request.responseText); 
@@ -92,10 +88,6 @@
             });
         });
     </script>
-
-        <div id="prev" style="width: 50px; height: 50px; background-color:red"></div>
-
-        <div id="content1" style="width:100px; height:100px; background-color:100px"></div>
 </body>
 </html>
 

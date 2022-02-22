@@ -52,16 +52,15 @@
             </ul>
         </div>
     </nav>
-    <script src="script/script.js"></script>
-</body>
-</html>
-
-<?php
+    
+    <button  id="back-button" onclick="history.back()">Go Back</button>
+    
+    <?php
 
 //Check if there is a request
 if(isset($_GET['page'])){
-//Only valid requests
-
+    //Only valid requests
+    
     if($_GET['page']=='Articles'){
         //Aricle Controller
         require_once 'controller/ArticleController.php';
@@ -71,61 +70,117 @@ if(isset($_GET['page'])){
         $articleCtrl->handleArticles();
         else{
             $articleCtrl->handleArticle($_GET['id']);}
+            
+        } 
+        //Route for adding article
+        else if($_GET['page']=='Ajouter'){
+            /* require_once 'controller/CategorieController.php';
+            $categCtrl = new CategorieController();
+            $categories = $categCtrl->getCategories();
+            */
+            require_once 'controller/ArticleController.php';
+            $articleCtrl = new ArticleController();
+            $articleCtrl->addArticle();
+            
+        }
         
-    } 
-    //Route for adding article
-    else if($_GET['page']=='Ajouter'){
-        /* require_once 'controller/CategorieController.php';
-        $categCtrl = new CategorieController();
-        $categories = $categCtrl->getCategories();
- */
-        require_once 'controller/ArticleController.php';
-        $articleCtrl = new ArticleController();
-        $articleCtrl->addArticle();
-
+        else if($_GET['page'] =='Ventes'){
+            
+            require_once 'controller/VenteController.php';
+            $venteCtrl = new VenteController();
+            $venteCtrl->handleVentes();
+        }
+        
+        // Manage Categories
+        else if($_GET['page']=='Categories'){
+            require_once 'controller/CategorieController.php';
+            $articleCtrl = new CategorieController();
+            $articleCtrl->manageCategories();
+        }
+        // Error view
+        else {
+            $message = '404, this page doesnt exist';
+            require_once 'View/errorView.php';
+        }
     }
     
-    else if($_GET['page'] =='Ventes'){
-
-        require_once 'controller/VenteController.php';
-        $venteCtrl = new VenteController();
-        $venteCtrl->handleVentes();
-    }
-
-    // Manage Categories
-    else if($_GET['page']=='Categories'){
-        require_once 'controller/CategorieController.php';
-        $articleCtrl = new CategorieController();
-        $articleCtrl->manageCategories();
-    }
-    // Error view
-    else {
-        $message = '404, this page doesnt exist';
-        require_once 'View/errorView.php';
-    }
-}
-
-else{
-    require_once 'controller/ArticleController.php';
-    $articleCtrl = new ArticleController();
-    $articleCtrl->stockRecap();
-};
-
-?>
+    else{
+        require_once 'controller/ArticleController.php';
+        $articleCtrl = new ArticleController();
+        $articleCtrl->stockRecap();
+    };
+    
+    ?>
 
 
 <script>
+    
+// Start cookie
 
+sessionStorage.setItem('chill',1);
+let sessionBaseV= 1;
+const links = document.querySelectorAll('a');
+
+function setDefault(){    
+  if(sessionStorage['chill'] === undefined) {
+     sessionStorage['chill'] = sessionBaseV;
+  }
+}
+setDefault();
+
+function getChill() {
+   return parseInt(sessionStorage["chill"]);
+}
+
+function incrementChill(){
+    //Mock upf
+    /*  if(currentValue > CONSTANT_VALUE){
+        sessionStorage['chill'] = currentValue + 1;
+    } */
+    //Incr on click
+    for(const l of links){
+    let currentValue = getChill();
+    l.addEventListener('click',()=>{
+        sessionStorage['chill'] = currentValue +1 ;
+    } );
+
+    // Decr on btn click
+    backbutton.addEventListener('click',()=>{
+    console.log('session storage :');
+    sessionStorage['chill'] = currentValue -- ;
+
+});
+
+
+
+}
+
+}
+console.log(getChill());
+
+
+
+const backbutton = document.querySelector('#back-button');
+
+
+
+if(getChill() = 1 ){
+    backbutton.removeAttribute('disabled','');
+}else{
+    backbutton.setAttribute('disabled','');
+}
+
+// End Cookies
     button = document.querySelector('#burger-btn');
     bars = document.querySelectorAll('#burger-btn span');
     menu = document.querySelector('#menu');
     console.log(bars[0]);  
     //bars[0]
     mobileMenu= false;
-
+    
     function menuAnimation(){
         mobileMenu = !mobileMenu;
-
+        
         if(mobileMenu){
             bars[0].style.top = '50%';
             bars[0].style.height = "5px";
@@ -155,7 +210,22 @@ else{
             menu.querySelector('ul').style.opacity = 0;
         }
     }
+    
+    var x = window.matchMedia("(max-width: 700px)");
+    
+    
+    
+    window.addEventListener('resize', ()=>{
+        
+        if (x.matches) { // If media query matches
+            button.addEventListener('click',menuAnimation);
+            menu.querySelector('ul').addEventListener('click',menuAnimation);
+        }; 
+        
+    });
+    
 
-    button.addEventListener('click',menuAnimation);
-    menu.querySelector('ul').addEventListener('click',menuAnimation);
     </script>
+    <script src="script/script.js"></script>
+    </body>
+    </html>
