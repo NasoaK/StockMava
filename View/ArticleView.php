@@ -22,7 +22,7 @@
 <section>
 
 
-<div id="export-stock-container">
+<!-- <div id="export-stock-container">
     <button>
          <a href='controller/exportJouet.php'>Stock jouets excel</a>
     </button>
@@ -35,19 +35,23 @@
     <button>
          <a>Stock instruments excel</a>
     </button>
-</div>
+</div> -->
 
 <!-- Tri all articles by categories -->
-<form action="" method="POST">
-    <select name="categorie" id="">
-        <option value=""></option>
-        <?php foreach($categories as $categorie) : ?>
-            <option value="<?= $categorie[0];?>"><?= $categorie[1]?></option>
-        <?php endforeach ; ?> 
-    </select>
-    <input type="submit" name="tri-categorie" value="trier par categorie">
-</form>
 
+<div id="categorie-tri-container">
+
+    <form action="" method="POST">
+        <select name="categorie" id="">
+            <option value=""></option>
+            <?php foreach($categories as $categorie) : ?>
+                <option value="<?= $categorie[0];?>"><?= $categorie[1]?></option>
+                <?php endforeach ; ?> 
+            </select>
+            <input type="submit" name="tri-categorie" value="trier par categorie">
+        </form>
+</div>
+        
 
     <div id="container">
 

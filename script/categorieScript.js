@@ -24,7 +24,7 @@ deleteArt.addEventListener('click', ()=>{
 
 }); 
 
-
+ 
 /* function deleteF(){
 
     allowSubmit = false;

@@ -36,9 +36,10 @@
                 <li>
                     <a href="index.php" class="nav-link <?php echo ($_GET['page']== "" ? "nav-link-active" : "")?>">Home</a>
                 </li>
-                <li>
+                <!-- OlD Vente du jour -->
+               <!--  <li>
                     <a href="?page=Ventes" class=" nav-link <?php echo ($_GET['page'] == "Ventes" ? "nav-link-active" : "")?>" >Ventes du Jour</a>
-                </li>
+                </li> -->
                 <li>
                     <a href="?page=Articles" class=" nav-link <?php echo ($_GET['page'] == "Articles" ? "nav-link-active" : "")?>" >List stock</a>
                 </li>
@@ -160,7 +161,7 @@ console.log(getChill());
 
 
 
-const backbutton = document.querySelector('#back-button');
+/* const backbutton = document.querySelector('#back-button');
 
 
 
@@ -168,7 +169,7 @@ if(getChill() = 1 ){
     backbutton.removeAttribute('disabled','');
 }else{
     backbutton.setAttribute('disabled','');
-}
+} */
 
 // End Cookies
     button = document.querySelector('#burger-btn');
@@ -211,7 +212,7 @@ if(getChill() = 1 ){
         }
     }
     
-    var x = window.matchMedia("(max-width: 700px)");
+    var x = window.matchMedia("(max-width: 800px)");
     
     
     
