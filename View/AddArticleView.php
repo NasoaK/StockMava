@@ -13,8 +13,6 @@
  
 <div class="container">
 
-<p><?= $count; ?></p>
- 
     <form action="" method="post" enctype="multipart/form-data">
 
     <h3>Ajoute un Article</h3>

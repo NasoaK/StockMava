@@ -54,7 +54,7 @@
         </div>
     </nav>
     
-    <button  id="back-button" onclick="history.back()">Go Back</button>
+    <button  id="back-button" onclick="history.back()">Retour</button>
     
     <?php
 

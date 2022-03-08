@@ -15,9 +15,9 @@
 
 
 
-<form action="" method="post">
+<!-- <form action="" method="post">
     <input type="submit" value="rechercher" name="searchB">
-</form>
+</form> -->
 
 <section>
 

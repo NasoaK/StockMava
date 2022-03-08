@@ -1,7 +1,7 @@
 #categorie-tri-container{
   display: flex;
   align-items: center;
-  justify-content: ;
+  justify-content: center;
 }
 
 
@@ -126,6 +126,8 @@ width: 100%;
 .card:hover .detail-card{
   bottom: 0;
 }
+
+
 
 @media (max-width: 767px) { 
 
