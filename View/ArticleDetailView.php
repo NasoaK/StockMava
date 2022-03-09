@@ -10,6 +10,8 @@
     }
 </style>
 
+<button  id="back-button"> <a href="?page=Articles"></a>Retour</button>
+
     <div class="container">
         <div class="img-container">
             <?= $article->get_image();?></p>

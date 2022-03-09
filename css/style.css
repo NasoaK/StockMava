@@ -119,16 +119,7 @@ a {
   color: rgba(253, 223, 192, 1);
 }
 
-#back-button{
-  padding: 5px 15px;
-  border: none;
-  transition:0.5s; 
-  border-radius: 12px;
-  margin-top: 10px;
-  cursor: pointer;
-  color:white;
-  background-color: rgb(99, 100, 99);
-}
+
 
 @media(max-width:750px){
 
