@@ -163,41 +163,42 @@ class ArticleController
    
     // TODO POST ARTICLE
     public function addArticle(){
+
         $categories = $this->_model->getCategories();
         $count = count($categories);
-            //3. Pass the Article's list to the view
-            require_once 'View/AddArticleView.php';
-    
+        //3. Pass the Article's list to the view
+        
+        
+        
+        //Check if form is submited
+        if(isset($_POST['submit'])){
             
+            $nom = trim($_POST['nom']);
+            $prix_achat = trim($_POST['prixAchat']);
+            $prix_vente = trim($_POST['prixVente']);
+            $quantity = trim($_POST['quantity']);
+            $image = $this->_model->addImage($nom);
+            $categorie_id = trim($_POST['categorie']);
+            $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie_id);
             
-            //Check if form is submited
-            if(isset($_POST['submit'])){
+            // Test recherche dynamique Work 
+            //SELECT * FROM `ArticlesMava` WHERE nom LIKE '%a%'
+            
+            // Error handler
+            /*  
+            $errors = array();
+            if(empty($name)){ array_push($errors, "Il manque le nom de l'article");}
+            if(empty($prix)){ array_push($errors, "Il manque un prix à l'article");}
+            if(empty($quantity)){ array_push($errors, "Il manque la quantité de l'article");}
+            
+            var_dump($errors);
+            
+            if(count($errors)==0){
                 
-                $nom = trim($_POST['nom']);
-                $prix_achat = trim($_POST['prixAchat']);
-                $prix_vente = trim($_POST['prixVente']);
-                $quantity = trim($_POST['quantity']);
-                $image = $this->_model->addImage($nom);
-                $categorie_id = trim($_POST['categorie']);
-                $this->_model->postArticle($nom,$prix_achat, $prix_vente,$quantity, $image, $categorie_id);
-                
-                // Test recherche dynamique Work 
-                //SELECT * FROM `ArticlesMava` WHERE nom LIKE '%a%'
-                
-                // Error handler
-                /*  
-                $errors = array();
-                if(empty($name)){ array_push($errors, "Il manque le nom de l'article");}
-                if(empty($prix)){ array_push($errors, "Il manque un prix à l'article");}
-                if(empty($quantity)){ array_push($errors, "Il manque la quantité de l'article");}
-                
-                var_dump($errors);
-                
-                if(count($errors)==0){
-                    
-                }  */
-                
-            }
+            }  */
+            
+        }
+        require_once 'View/AddArticleView.php';
         
             
         }
